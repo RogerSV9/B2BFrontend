@@ -1,9 +1,19 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', loadChildren: './home/home.module#HomePageModule' },
+  { path: 'login', loadChildren: './public/login/login.module#LoginPageModule' },
+  { path: 'register', loadChildren: './public/register/register.module#RegisterPageModule' },
+  { path: 'menu', loadChildren: './screens/menu/menu.module#MenuPageModule' },
+  { path: 'profile', loadChildren: './screens/pages/profile/profile.module#ProfilePageModule' },
+  { path: 'chat', loadChildren: './screens/pages/chat/chat.module#ChatPageModule' },
+  { path: 'home', loadChildren: './screens/pages/home/home.module#HomePageModule' },
+  { path: 'events', loadChildren: './screens/pages/events/events.module#EventsPageModule' },
+
+
 ];
 
 @NgModule({
