@@ -55,6 +55,7 @@ export class ProfilePage implements OnInit {
   }
 
   processFile(imageInput: any) {
+    this.imageService.passid(this.user._id)
     const file: File = imageInput.files[0];
     const reader = new FileReader();
 

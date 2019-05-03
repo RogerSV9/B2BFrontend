@@ -21,4 +21,7 @@ export class ImageService {
 
     return this.http.post(this.environment.urlUser+'/uploadimage', formData);
   }
+  public passid(id: String){
+    return this.http.post(this.environment.urlUser+'/passid', id);
+  }
 }
