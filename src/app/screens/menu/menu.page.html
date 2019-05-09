@@ -1,9 +1,40 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>menu</ion-title>
-  </ion-toolbar>
+ 
 </ion-header>
 
-<ion-content>
+<ion-content padding class="bg-class">
+
+  <ion-tabs>
+    
+      <ion-tab-bar slot="bottom">
+
+          <!--Chat-->
+          <ion-tab-button (click)="toChatPage()" tab="chat">
+            <ion-icon name="chatbubbles" custom-icon></ion-icon>
+            <ion-badge>6</ion-badge>
+          </ion-tab-button>
+  
+          <!--Events-->
+          <ion-tab-button (click)="toEventsPage()" tab="events">
+              <ion-icon name="calendar"></ion-icon>
+          </ion-tab-button>
+  
+          <!--Home-->    
+          <ion-tab-button (click)="toHomePage()" tab="home" style="background-image:url('')">
+                    </ion-tab-button>
+  
+          <!--Notifications-->
+          <ion-tab-button tab="notifications">
+              <ion-icon name="mail-unread"></ion-icon>
+          </ion-tab-button>
+  
+          <!--Profile-->    
+          <ion-tab-button tittle="profile" tab="profile">
+           <ion-icon name="contact"></ion-icon>          
+          </ion-tab-button>
+  
+        </ion-tab-bar>
+    
+  </ion-tabs>  
 
 </ion-content>

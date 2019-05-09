@@ -1,0 +1,14 @@
+ion-tab-bar {
+    --background: transparent;
+    --ion-color-base: transparent !important;
+    }
+
+ion-icon {
+        font-size: 40px;
+        --color: white;
+        --color-selected: red;
+    }
+
+    .bg-class{
+        --background: linear-gradient(197deg, rgb(207, 20, 20) 25%, rgb(231, 44, 44) 25%, rgb(143, 19, 19) 25%, rgba(0,0,0,1) 25%) !important;
+      }
