@@ -27,11 +27,7 @@ export class UserService {
   getUsers() {
     return this.http.get(this.environment.urlUser + '/users');
   }
-<<<<<<< HEAD
-}
-=======
   getUsersDetail(_id: string): Observable<User>{
     return this.http.get<User>(this.environment.urlUser +`/users/info/${_id}`);
   }
 }
->>>>>>> refs/remotes/origin/master
