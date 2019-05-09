@@ -3,8 +3,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: 'home', loadChildren: './home/home.module#HomePageModule' },
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', loadChildren: './public/login/login.module#LoginPageModule' },
   { path: 'register', loadChildren: './public/register/register.module#RegisterPageModule' },
   { path: 'menu', loadChildren: './screens/menu/menu.module#MenuPageModule' },
@@ -12,7 +11,7 @@ const routes: Routes = [
   { path: 'chat', loadChildren: './screens/pages/chat/chat.module#ChatPageModule' },
   { path: 'home', loadChildren: './screens/pages/home/home.module#HomePageModule' },
   { path: 'events', loadChildren: './screens/pages/events/events.module#EventsPageModule' },
-
+  { path: 'screens', canActivate: [AuthGuard], loadChildren: './screens/screen-routing.module#ScreenRoutingModule' },
 
 ];
 
