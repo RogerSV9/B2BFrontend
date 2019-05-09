@@ -15,6 +15,7 @@ import { NavController } from '@ionic/angular';
 export class RegisterPage implements OnInit {
 
   registerForm: FormGroup;
+  myGroup: FormGroup;
   validation_messages: any;
   matching_passwords_group: FormGroup;
   myDate: any ;
@@ -22,6 +23,7 @@ export class RegisterPage implements OnInit {
   constructor(private userService: UserService, private router: Router, private formBuilder: FormBuilder, public navCtrl: NavController) {
     this.myDate = "2020-12-01";
   /*   this.registerForm = this.createMyForm(); */
+ 
     this.registerForm = this.formBuilder.group({
       name: new FormControl('', Validators.compose([
         Validators.required,
@@ -35,8 +37,10 @@ export class RegisterPage implements OnInit {
         Validators.required,
         Validators.pattern(/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/)])),
         
-        age: new FormControl('', Validators.compose([
-          Validators.required])),
+        /* age: new FormControl('', Validators.compose([
+          Validators.required])), */
+
+        firstName: new FormControl(),
 
       password: new FormControl('', Validators.compose([
         Validators.required,

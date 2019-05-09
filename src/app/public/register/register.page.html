@@ -84,15 +84,15 @@
                     <ion-item>
                         <ion-icon name="eye" item-start></ion-icon>
                         <ion-label stacked>Age</ion-label>
-                        <ion-input name="age" type="age" formControlName="age" minlength="5" maxlength="30"  placeholder="age"></ion-input>
+                        <ion-datetime formControlName="firstName" placeholder="MM/DD/YYYY" displayFormat="MM/DD/YYYY" ></ion-datetime>
                       </ion-item>
-                    <div class="validation-errors">
+                    <!-- <div class="validation-errors">
                         <ng-container *ngFor="let validation of validation_messages.age">
                             <div class="alert alert-danger" class="col-content" *ngIf="registerForm.get('age').hasError(validation.type) && (registerForm.get('age').dirty || registerForm.get('age').touched)">
                                 {{ validation.message }}
                             </div>
                         </ng-container>
-                    </div>
+                    </div> -->
                     <ion-item>
                         <ion-icon name="eye" item-start></ion-icon>
                         <ion-label stacked>Password</ion-label>
@@ -117,6 +117,10 @@
                             </div>
                         </ng-container>
                     </div>
+                    <!-- <ion-item>
+                        <ion-label>Date</ion-label>
+                        <ion-datetime formControlName="firstName" displayFormat="MM/DD/YYYY" ></ion-datetime>
+                      </ion-item> -->
                   </div>
                   <div padding>
                     <ion-button  size="large" shape="round" type="submit" [disabled]="registerForm.invalid" expand="block">Register</ion-button>
