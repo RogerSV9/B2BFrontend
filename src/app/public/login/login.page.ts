@@ -4,6 +4,7 @@ import { FormBuilder, FormControl, FormGroup, Validators, NgForm  } from '@angul
 import { Router } from '@angular/router';
 import { User } from 'src/app/models/user';
 import { HttpErrorResponse } from '@angular/common/http';
+declare var FB: any;
 
 
 
@@ -43,6 +44,24 @@ export class LoginPage implements OnInit {
         { type: 'pattern', message: 'It must conatain a number' },
       ]
     };
+    (window as any).fbAsyncInit = function() {
+      FB.init({
+        appId      : '2275019405888323',
+        cookie     : true,
+        xfbml      : true,
+        version    : 'v3.2'
+      });
+      FB.AppEvents.logPageView();
+    };
+    
+
+    (function(d, s, id){
+       var js, fjs = d.getElementsByTagName(s)[0];
+       if (d.getElementById(id)) {return;}
+       js = d.createElement(s); js.id = id;
+       js.src = "https://connect.facebook.net/en_US/sdk.js";
+       fjs.parentNode.insertBefore(js, fjs);
+     }(document, 'script', 'facebook-jssdk'));
   }
 
   login(form) {
@@ -63,7 +82,38 @@ export class LoginPage implements OnInit {
             this.handleError(err);
           });
     }
-
+    submitLogin(){
+      console.log("submit login to facebook");
+        FB.login((response)=>
+          {
+            console.log("hola");
+            console.log('submitLogin',response);
+            if (response.authResponse)
+            {
+              console.log(response.authResponse);
+              
+              let clientID: string = response.authResponse.userID;
+              console.log(clientID);
+              
+              FB.api(
+                "/"+clientID+"/music",
+                function (response) {
+                  if (response && !response.error) {
+                    console.log(response);
+                  }
+                }
+              );
+              /* let token = res['token'];
+              localStorage.setItem('token', token); */
+              this.router.navigateByUrl('/home');
+              
+             }
+             else
+             {
+             console.log('User login failed');
+           }
+        });
+  }
 private handleError(err: HttpErrorResponse) {
 if (err.status == 500) {
   console.log('entra')
