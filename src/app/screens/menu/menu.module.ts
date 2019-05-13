@@ -10,8 +10,33 @@ import { MenuPage } from './menu.page';
 const routes: Routes = [
   {
     path: '',
-    component: MenuPage
+    redirectTo: 'api/menu/home',
+    pathMatch: 'full'
+  },  
+  {
+    path: '',
+    component: MenuPage,
+    children: [
+      {
+        path: 'home',
+        loadChildren: './pages/home/home.module#HomePageModule'
+      },
+      {
+        path: 'events',
+        loadChildren: './pages/events/events.module#EventsPageModule'
+      },
+      {
+        path: 'profile',
+        loadChildren: './pages/profile/profile.module#ProfilePageModule'
+      },
+      {
+        path: 'chat',
+        loadChildren: './pages/chat/chat.module#ChatPageModule'
+      }
+    ]
   }
+
+
 ];
 
 @NgModule({

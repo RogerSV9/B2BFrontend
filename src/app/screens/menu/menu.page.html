@@ -2,8 +2,8 @@
  
 </ion-header>
 
-<ion-content padding class="bg-class">
-
+<ion-content padding class="background">
+<div>
   <ion-tabs>
     
       <ion-tab-bar slot="bottom">
@@ -20,7 +20,7 @@
           </ion-tab-button>
   
           <!--Home-->    
-          <ion-tab-button (click)="toHomePage()" tab="home" style="background-image:url('')">
+          <ion-tab-button class="size" (click)="toHomePage()" tab="home" class="myButton">
                     </ion-tab-button>
   
           <!--Notifications-->
@@ -36,5 +36,6 @@
         </ion-tab-bar>
     
   </ion-tabs>  
+</div>
 
 </ion-content>

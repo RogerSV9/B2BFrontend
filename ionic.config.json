@@ -1,5 +1,7 @@
 {
   "name": "b2bfrontend",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

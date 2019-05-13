@@ -4,11 +4,18 @@ ion-tab-bar {
     }
 
 ion-icon {
-        font-size: 40px;
-        --color: white;
+        font-size: 53px;
+        color: white;
         --color-selected: red;
     }
 
-    .bg-class{
-        --background: linear-gradient(197deg, rgb(207, 20, 20) 25%, rgb(231, 44, 44) 25%, rgb(143, 19, 19) 25%, rgba(0,0,0,1) 25%) !important;
-      }
+
+
+    ion-content.background{
+        --background: url('https://res.cloudinary.com/dg7ybkbb8/image/upload/v1557394230/red-black-gradient_xvaxtm.jpg') 0 0/100% 100% no-repeat;
+    }
+
+    .myButton{
+        background: url('https://res.cloudinary.com/dg7ybkbb8/image/upload/v1557400392/logo_transpartent_-_copia_lszp6o-Circle_zrqqcj_hnmdxf.png') no-repeat;
+        text-align: center;
+    }
