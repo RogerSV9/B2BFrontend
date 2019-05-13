@@ -1,53 +1,54 @@
 <ion-content class="background">
-
   <div id="container">
+    <ion-card color="light" shape="round">
+      <ion-card-header color="dark" class="letra">LOGIN</ion-card-header>
+  <ion-card-content>
   <form #form="ngForm" (ngSubmit)="login(form)">
     <ion-grid>
-      <ion-row color="light" justify-content-center>
+      <ion-row color="primary" justify-content-center>
         <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
           <br>
-         <div text-center>
-              <ion-title color="light">BEAT2BEAT</ion-title>
+          <div text-center>
+              <ion-title color="primary">BEAT2BEAT</ion-title>
           </div>
-          <div class="divBackground">
-            
-            <ion-item class="item">
-                <ion-label color="light" position="stacked">Username</ion-label>
+          <div padding>
+              <ion-title color="dark">BEAT2BEAT</ion-title>
+            <ion-item>
+                <ion-label position="stacked">Username</ion-label>
               <ion-input name="username" type="username" minlength="3" maxlength="10" placeholder="" ngModel required></ion-input>
             </ion-item>
-
             <ion-item>
-                <ion-label  color="light" position="stacked">Password</ion-label>
+                <ion-label position="stacked">Password</ion-label>
               <ion-input name="password" type="password" minlength="3" maxlength="10" placeholder="" ngModel required></ion-input>
             </ion-item>
-
           </div>
-
-          <div text-right>
-            <ion-button class="LoginButton" size="large"  shape="round"  type="submit" [disabled]="form.invalid" expand="block">Login</ion-button>
+          <div padding>
+            <ion-button size="large"  shape="round"  type="submit" [disabled]="form.invalid" expand="block">Login</ion-button>
           </div>
-
         </ion-col>
       </ion-row>
     </ion-grid>
   </form>
+
   <!-- <ion-item >
       <ion-icon name="logo-facebook" shape="round" md="logo-facebook"></ion-icon>
   </ion-item> -->
   <button>
       
       <ion-icon  color="primary" size="large"  shape="round" name="logo-facebook" md="logo-facebook" (click)="submitLogin()"></ion-icon>
-      <ion-label position="fixed" >Facebook Login</ion-label>
+      <ion-label position="fixed" >Login amb FaceBook</ion-label>
     </button>
 
     
   <ion-row>
     <nav>
-    <div color="white" text-center padding>
+    <div color="primary" text-center padding>
       If you don't have an account, please <a routerLink='/register'>
     register</a> first!
     </div>
   </nav>
 </ion-row>
+</ion-card-content>
+</ion-card>
 </div>
 </ion-content>

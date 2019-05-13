@@ -1,54 +1,20 @@
-<!--   <ion-content  color="danger">
-    <form  #form="ngForm" (ngSubmit)="register()">
-      <ion-grid>
-        <ion-row color="primary" justify-content-center>
-          <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
-            <div text-center>
-              <h3>Create your account!</h3>
-            </div>
-            <div padding>
-              <ion-item>
-                <ion-input  name="name" type="text" placeholder="name" ngModel required></ion-input>
-              </ion-item>
-              <ion-item>
-                <ion-input  name="username" type="text" placeholder="useraname" ngModel required></ion-input>
-              </ion-item>
-              <ion-item>
-                <ion-input name="email" type="email" placeholder="email" ngModel required></ion-input>
-              </ion-item>
-              <ion-item>
-                <ion-input name="password" type="password" placeholder="password" ngModel required></ion-input>
-              </ion-item>
-              <ion-item>
-                <ion-input name="confirm" type="password" placeholder="password again" ngModel required></ion-input>
-              </ion-item>
-            </div>
-            <div padding>
-              <ion-button  size="large" shape="round" type="submit" [disabled]="form.invalid" expand="block">Register</ion-button>
-            </div>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
-    </form>
-  </ion-content> -->
 
-
-    <ion-app>
-        <ion-content>
+        <ion-content class="background">
+            <div id="container">
+              <ion-card color="light" shape="round">
+                <ion-card-header color="dark" class="letra">REGISTER</ion-card-header>
+            <ion-card-content>
           <form [formGroup]="registerForm"  (ngSubmit)="register()">
             <ion-grid>
               <ion-row color="primary" justify-content-center>
                 <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
-                  <div text-center>
-                  <h3>Create your account!</h3>
-                  </div>
                   <div padding>
                     <ion-item>
                      <!-- <ion-label position="fixed"> </ion-label>
                      <h3>Create your account!</h3> -->
                      <ion-icon name="person" item-start></ion-icon>
                      <ion-label stacked>Name</ion-label>
-                      <ion-input  formControlName="name" name="name" type="text" minlength="3" maxlength="10" placeholder="name"></ion-input>
+                      <ion-input  formControlName="name" name="name" type="text" minlength="3" maxlength="10"></ion-input>
                     </ion-item>
                     <div class="validation-errors">
                           <ng-container *ngFor="let validation of validation_messages.name">
@@ -60,7 +26,7 @@
                     <ion-item>
                      <ion-icon name="person" item-start></ion-icon>
                      <ion-label stacked>Username</ion-label>
-                      <ion-input  formControlName="username" name="username" type="text" minlength="3" maxlength="10" placeholder="username"></ion-input>
+                      <ion-input  formControlName="username" name="username" type="text" minlength="3" maxlength="10"></ion-input>
                     </ion-item>
                     <div class="validation-errors">
                         <ng-container *ngFor="let validation of validation_messages.username">
@@ -72,7 +38,7 @@
                     <ion-item>
                         <ion-icon name="mail" item-start></ion-icon>
                         <ion-label stacked>Email</ion-label>
-                      <ion-input name="email" type="email" formControlName="email" minlength="5" maxlength="30"  placeholder="email"></ion-input>
+                      <ion-input name="email" type="email" formControlName="email" minlength="5" maxlength="30"></ion-input>
                     </ion-item>
                     <div class="validation-errors">
                         <ng-container *ngFor="let validation of validation_messages.email">
@@ -84,19 +50,19 @@
                     <ion-item>
                         <ion-icon name="eye" item-start></ion-icon>
                         <ion-label stacked>Age</ion-label>
-                        <ion-input name="age" type="age" formControlName="age" minlength="5" maxlength="30"  placeholder="age"></ion-input>
+                        <ion-datetime formControlName="firstName" placeholder="MM/DD/YYYY"></ion-datetime>
                       </ion-item>
-                    <div class="validation-errors">
+                    <!-- <div class="validation-errors">
                         <ng-container *ngFor="let validation of validation_messages.age">
                             <div class="alert alert-danger" class="col-content" *ngIf="registerForm.get('age').hasError(validation.type) && (registerForm.get('age').dirty || registerForm.get('age').touched)">
                                 {{ validation.message }}
                             </div>
                         </ng-container>
-                    </div>
+                    </div> -->
                     <ion-item>
                         <ion-icon name="eye" item-start></ion-icon>
                         <ion-label stacked>Password</ion-label>
-                      <ion-input name="password" type="password" formControlName="password" minlength="3" maxlength="10"  placeholder="password"></ion-input>
+                      <ion-input name="password" type="password" formControlName="password" minlength="3" maxlength="10"></ion-input>
                     </ion-item>
                     <div class="validation-errors">
                         <ng-container *ngFor="let validation of validation_messages.password">
@@ -108,7 +74,7 @@
                     <ion-item>
                         <ion-icon name="eye" item-start></ion-icon>
                         <ion-label stacked>Repeat Password</ion-label>
-                      <ion-input name="confirm" type="password" formControlName="confirmPassword" minlength="3" maxlength="10"  placeholder="confirm password"></ion-input>
+                      <ion-input name="confirm" type="password" formControlName="confirmPassword" minlength="3" maxlength="10"></ion-input>
                     </ion-item>
                     <div class="validation-errors">
                         <ng-container *ngFor="let validation of validation_messages.confirmPassword">
@@ -117,6 +83,10 @@
                             </div>
                         </ng-container>
                     </div>
+                    <!-- <ion-item>
+                        <ion-label>Date</ion-label>
+                        <ion-datetime formControlName="firstName" displayFormat="MM/DD/YYYY" ></ion-datetime>
+                      </ion-item> -->
                   </div>
                   <div padding>
                     <ion-button  size="large" shape="round" type="submit" [disabled]="registerForm.invalid" expand="block">Register</ion-button>
@@ -124,8 +94,9 @@
                 </ion-col>
               </ion-row>
             </ion-grid>
-          </form>                
-        </ion-content>
-    </ion-app>
+          </form>
+      </ion-card-content>
+    </ion-card>
+  
 
     
