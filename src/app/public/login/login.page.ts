@@ -18,6 +18,7 @@ export class LoginPage implements OnInit {
 
   loginForm: FormGroup;
   validation_messages: any;
+  user: User;
 
   constructor(private userService: UserService, private router: Router,  private formBuilder: FormBuilder) {
     this.loginForm = this.formBuilder.group({
@@ -75,7 +76,10 @@ export class LoginPage implements OnInit {
             console.log(res);
             let token = res['token'];
             localStorage.setItem('token', token);
+            user = res['username'];
+            localStorage.setItem('id', user._id);
             this.router.navigateByUrl('/menu/home');
+            
           },
           err => {
             console.log(err);

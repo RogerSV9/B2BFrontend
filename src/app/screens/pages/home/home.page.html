@@ -1,1 +1,19 @@
 
+<ion-content padding>
+    <!-- List of Text Items -->
+    
+   <ion-list>
+     <ion-item *ngFor="let user of userService.user">
+        <ion-card>
+            <ion-card-header>
+              <ion-card-subtitle>{{user.username}}</ion-card-subtitle>
+              <ion-card-title>{{user.age}}</ion-card-title>
+            </ion-card-header>
+          
+            <ion-card-content>
+                {{user.email}}
+            </ion-card-content>
+          </ion-card>
+     </ion-item>
+   </ion-list>
+   </ion-content>
