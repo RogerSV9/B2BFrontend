@@ -1,12 +1,7 @@
 .col-content{
     background-color: lightpink
 }
-.bg{
-    // background: linear-gradient(to top, #e62222 0%, #fff8f8 100%);
-      background-image: url('../../../../resources/portada.jpg');
-      background-size: cover;
-          //background-image: linear-gradient(to top, #e62222 0%, #fff8f8 100%);
-      }
+
       #container{
               margin:17% auto;
               text-align:center;
@@ -14,7 +9,7 @@
       }
   
       ion-content.background{
-          --background: url('../../../../resources/portada5.jpg') 0 0/100% 100% no-repeat;
+          --background: url('https://res.cloudinary.com/dg7ybkbb8/image/upload/v1557394230/red-black-gradient_xvaxtm.jpg') 0 0/100% 100% no-repeat;
       }
   
   .letra{

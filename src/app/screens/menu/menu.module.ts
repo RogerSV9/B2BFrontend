@@ -19,19 +19,19 @@ const routes: Routes = [
     children: [
       {
         path: 'home',
-        loadChildren: './pages/home/home.module#HomePageModule'
+        loadChildren: '../pages/home/home.module#HomePageModule'
       },
       {
         path: 'events',
-        loadChildren: './pages/events/events.module#EventsPageModule'
+        loadChildren: '../pages/events/events.module#EventsPageModule'
       },
       {
         path: 'profile',
-        loadChildren: './pages/profile/profile.module#ProfilePageModule'
+        loadChildren: '../pages/profile/profile.module#ProfilePageModule'
       },
       {
         path: 'chat',
-        loadChildren: './pages/chat/chat.module#ChatPageModule'
+        loadChildren: '../pages/chat/chat.module#ChatPageModule'
       }
     ]
   }

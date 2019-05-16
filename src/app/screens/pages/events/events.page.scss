@@ -1,0 +1,56 @@
+.title {
+    font-size: 25px;
+    text-align: center;
+}
+
+.background {
+    --background: white;
+}
+
+.event {
+    --background: black;
+}
+
+.TitleEvent {
+    color: white;
+    text-align: center;
+}
+
+.myButton {
+	-moz-box-shadow:inset 0px 1px 0px 0px #caefab;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #caefab;
+	box-shadow:inset 0px 1px 0px 0px #caefab;
+	background-color:transparent;
+	-moz-border-radius:6px;
+	-webkit-border-radius:6px;
+	border-radius:6px;
+	border:1px solid #2fad18;
+	display:inline-block;
+	cursor:pointer;
+	color:#306108;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:3px 12px;
+	text-decoration:none;
+    text-shadow:0px 1px 0px #aade7c;
+    width: px;
+    height: 30px;
+}
+.myButton:hover {
+	background-color:transparent;
+}
+.myButton:active {
+	position:relative;
+	top:1px;
+}
+
+.description {
+    --background: white;
+}
+
+
+.createButton {
+	height: 80px;
+	width: 80px;
+}

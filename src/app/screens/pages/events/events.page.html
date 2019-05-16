@@ -1,5 +1,33 @@
-    
+<ion-card class="background">
+    <ion-card-header>
+      <table>
 
-<ion-button shape="round" (click)="goBack()">Log out</ion-button>
-<!-- <ion-button shape="round" routerLink='/profile'>Profile</ion-button>
-<ion-button shape="round" routerLink='/menu'>Menu</ion-button> -->
+      <tr>
+        <th></th>
+        <th><!-- <ion-card-title class="title">{{user.name}} {{user.surname}}, {{age}}</ion-card-title> -->
+          <ion-card-title class="title">EVENTS</ion-card-title></th>
+        <th></th>
+        <th>  
+          <ion-tab-button (click)="toCreateEventPage()" class=createButton>
+            <ion-icon name="add-circle-outline"></ion-icon>
+          </ion-tab-button> 
+        </th>      
+      </tr>
+      </table>
+    </ion-card-header>
+  
+    <ion-card-content>  
+    
+        <ion-card class=event>
+            <ion-card-title color= "light" class="EventTitle">Barcelona Beach Festival</ion-card-title>
+        
+        
+          <ion-card class=description>
+              <ion-tab-button class="myButton">JOIN</ion-tab-button>
+          </ion-card>
+
+          
+        </ion-card>
+  
+    </ion-card-content>
+  </ion-card>

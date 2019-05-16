@@ -8,7 +8,9 @@ const routes: Routes = [
   { path: 'profile', loadChildren: './pages/profile/profile.module#ProfilePageModule' },
   { path: 'chat', loadChildren: './pages/chat/chat.module#ChatPageModule' },
   { path: 'home', loadChildren: './pages/home/home.module#HomePageModule' },
-  { path: 'events', loadChildren: './pages/events/events.module#EventsPageModule' },
+  { path: 'events', loadChildren: './pages/events/events.module#EventsPageModule' },  { path: 'newevent', loadChildren: './pages/newevent/newevent.module#NeweventPageModule' },
+
+
 ];
 
 @NgModule({
