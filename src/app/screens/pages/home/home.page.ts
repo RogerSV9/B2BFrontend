@@ -1,33 +1,28 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from "../../../services/user.service";
-import { ImageService } from "../../../services/image.service";
-import { User } from "../../../models/user";
-import { ActivatedRoute } from '@angular/router';
-import * as moment from 'moment';
+import { Router, ActivatedRoute } from '@angular/router';
+import { UserService } from 'src/app/services/user.service';
+import { User } from 'src/app/models/user';
 
-class ImageSnippet {
-  pending: boolean = false;
-  status: string = 'init';
-
-  constructor(public src: string, public file: File) {}
-}
+let userid;
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.page.html',
   styleUrls: ['./home.page.scss'],
 })
+
+
 export class HomePage implements OnInit {
-
+  
   user: User;
-  selectedFile: ImageSnippet;
-  age: number;
 
-  constructor(private activatedRoute: ActivatedRoute, private userService: UserService, private imageService: ImageService) { 
+  constructor(private userService: UserService, private router: Router, private activatedRouter: ActivatedRoute) { 
     this.user= new User();
+      
   }
+
   ngOnInit() {
-    this.activatedRoute.params.subscribe(params =>{
+    this.activatedRouter.params.subscribe(params =>{
       if (typeof params ['id'] !== 'undefined'){
         this.user._id = params['id'];
       }
@@ -35,56 +30,25 @@ export class HomePage implements OnInit {
         this.user._id = '';
       }
     });
-    this.user._id = "5caf128799d1b20ba9d761e2"
-    this.getUserDetail(this.user._id);
-
+    userid = this.user._id;
+    this.UsersList();
   }
-  getUserDetail(_id: string){
-    this.userService.getUsersDetail(_id)
+  goBack() {
+    localStorage.removeItem('token');
+    this.router.navigateByUrl('/login');
+  }
+
+  
+  UsersList(){
+    let data = localStorage.getItem('id');
+    let user = new User(data, null, null,null, null, null, null, null, null, null);
+    console.log(user)
+    this.userService.UsersList(user)
     .subscribe(res =>{
-      this.user = res;
-      this.age = this.ageFromDateOfBirthday(this.user.age)
-      console.log(this.user) 
+      this.userService.user= res as User[];
+      console.log(res);
     });
   }
-  private onSuccess() {
-    this.selectedFile.pending = false;
-    this.selectedFile.status = 'ok';
-  }
 
-  private onError() {
-    this.selectedFile.pending = false;
-    this.selectedFile.status = 'fail';
-    this.selectedFile.src = '';
-  }
 
-  processFile(imageInput: any) {
-    this.imageService.passid(this.user._id)
-    const file: File = imageInput.files[0];
-    const reader = new FileReader();
-
-    reader.addEventListener('load', (event: any) => {
-
-      this.selectedFile = new ImageSnippet(event.target.result, file);
-
-      this.selectedFile.pending = true;
-      this.imageService.uploadImage(this.selectedFile.file).subscribe(
-        (res) => {
-          this.onSuccess();
-          console.log(res)
-        },
-        (err) => {
-          this.onError();
-          console.log(err)
-        })
-    });
-    reader.readAsDataURL(file);
-  }
-
-  public ageFromDateOfBirthday(dateOfBirth: any): number{
-    var date = moment(dateOfBirth, "YYYY-MM-DD")
-    console.log(date)
-    return moment().diff(date, 'years');
-    //return moment(dateOfBirth, 'years').fromNow()
-  }
 }

@@ -4,51 +4,21 @@
     <ion-card-title class="title">Reva Dhawan, 20</ion-card-title>
   </ion-card-header>
 
-  <ion-card-content padding>
-    <div class="image">
-      <ion-img src="https://res.cloudinary.com/dg7ybkbb8/image/upload/v1557867551/IMG_1076_zw0lwc.jpg"></ion-img>
-    </div>
-    <!--<div class="image-upload">
-      <label for="file-input">
-          <ion-icon name="camera"></ion-icon>
-      </label>
-  
-      <input #imageInput
-           id="file-input"
-           type="file"
-           accept="image/*"
-           (change)="processFile(imageInput)">
-  </div>-->
-
-  <ion-footer>
-  <ion-grid>
-      <ion-row>
-          <ion-col class="tags">
-              Tags:
-          </ion-col>
-        <!--<ion-col *ngFor="let tag of user.tag">
-            <div class="col-content">
-                #{{tag}}
-              </div>
-        </ion-col>-->
-      </ion-row>
-    </ion-grid>  
-
-  </ion-footer>
-
-  <ion-tab-bar slot="bottom">
-
-    <!--Dislike-->
-    <ion-tab-button class="dislike">
-      <ion-icon name="close" custom-icon></ion-icon>
-    </ion-tab-button>
-
-    <!--Like-->
-    <ion-tab-button class="like">
-      <ion-icon name="heart" custom-icon></ion-icon>
-    </ion-tab-button>
-
-  </ion-tab-bar>
-
-  </ion-card-content>
-</ion-card>
+<ion-content padding>
+    <!-- List of Text Items -->
+    
+   <ion-list>
+     <ion-item *ngFor="let user of userService.user">
+        <ion-card>
+            <ion-card-header>
+              <ion-card-subtitle>{{user.username}}</ion-card-subtitle>
+              <ion-card-title>{{user.age}}</ion-card-title>
+            </ion-card-header>
+          
+            <ion-card-content>
+                {{user.email}}
+            </ion-card-content>
+          </ion-card>
+     </ion-item>
+   </ion-list>
+   </ion-content>
