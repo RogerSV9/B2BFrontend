@@ -30,7 +30,12 @@ export class UserService {
   getUsersDetail(_id: string): Observable<User>{
     return this.http.get<User>(this.environment.urlUser +`/users/info/${_id}`);
   }
-  UsersList(user: User){
-    return this.http.post(this.environment.urlUser +'/availablematches/', user);
+  UsersList(_id: string){
+    return this.http.post(this.environment.urlUser +'/availablematches/', {"_id": _id});
   }
+  acceptMatch(userSourceId: string, userDestId: string) {
+
+    return this.http.post(this.environment.urlUser + '/acceptmatch', {"userSourceId": userSourceId, "userDestId": userDestId});
+  }
+
 }

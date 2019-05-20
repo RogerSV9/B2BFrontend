@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
 import { User } from 'src/app/models/user';
+import { mobiscroll, MbscListviewOptions } from '@mobiscroll/angular';
 
 let userid;
 
@@ -18,7 +19,6 @@ export class HomePage implements OnInit {
 
   constructor(private userService: UserService, private router: Router, private activatedRouter: ActivatedRoute) { 
     this.user= new User();
-      
   }
 
   ngOnInit() {
@@ -33,22 +33,66 @@ export class HomePage implements OnInit {
     userid = this.user._id;
     this.UsersList();
   }
+
+
+  listSettings: MbscListviewOptions = {
+    stages: [{
+        percent: -20,
+        action: (event, inst) => {
+            inst.remove(event.target);
+            return false;
+        }
+    }, {
+        percent: 20,
+        action: (event, inst) => {
+            inst.remove(event.target);
+            return false;
+        }
+    }],
+    
+};
+
+cycleSettings: MbscListviewOptions = {
+    stages: [{
+        percent: -20,
+        action: (event, inst) => {
+            inst.move(event.target, 0);
+            return false;
+        }
+    }, {
+        percent: 20,
+        action: (event, inst) => {
+            inst.move(event.target, 0);
+            return false;
+        }
+    }],
+    
+};
   goBack() {
     localStorage.removeItem('token');
     this.router.navigateByUrl('/login');
   }
 
-  
   UsersList(){
-    let data = localStorage.getItem('id');
-    let user = new User(data, null, null,null, null, null, null, null, null, null);
-    console.log(user)
-    this.userService.UsersList(user)
+    let id = localStorage.getItem('id');
+    this.userService.UsersList(id)
     .subscribe(res =>{
       this.userService.user= res as User[];
       console.log(res);
     });
   }
+
+  acceptMatch(userDestId: string){
+
+    let userSourceId = localStorage.getItem('id');  
+    console.log("Source"+userSourceId)
+    console.log("Dest"+userDestId)  
+    this.userService.acceptMatch(userSourceId, userDestId)
+    .subscribe(res => {
+      console.log(res)
+    });
+  }
+  
 
 
 }
