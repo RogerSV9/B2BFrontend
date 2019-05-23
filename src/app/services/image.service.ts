@@ -14,14 +14,11 @@ export class ImageService {
     this.environment = new EnvironmentService();
   }
 
-  public uploadImage(image: File): Observable<any> {
+  public uploadImage(image: File, id: String): Observable<any> {
     const formData = new FormData();
 
     formData.append('imgUploader', image);
 
-    return this.http.post(this.environment.urlUser+'/uploadimage', formData);
-  }
-  public passid(id: String){
-    return this.http.post(this.environment.urlUser+'/passid', id);
+    return this.http.post(this.environment.urlUser+`/uploadimage/${id}`, formData);
   }
 }

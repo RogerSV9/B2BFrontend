@@ -1,3 +1,20 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Profile</ion-title>
+    <div class="image-upload" slot="end">
+      <label for="file-input">
+          <ion-icon name="camera"></ion-icon>
+      </label>
+  
+      <input #imageInput
+           id="file-input"
+           type="file"
+           accept="image/*"
+           (change)="processFile(imageInput)">
+  </div>
+  </ion-toolbar>
+</ion-header>
+
 <ion-content class="background-image">
   <ion-card class="background">
     <ion-card-header>
@@ -26,17 +43,6 @@
     </ion-card-header>
   
     <ion-card-content>
-          <div class="image-upload">
-              <label for="file-input">
-                  <ion-icon name="camera"></ion-icon>
-              </label>
-          
-              <input #imageInput
-                   id="file-input"
-                   type="file"
-                   accept="image/*"
-                   (change)="processFile(imageInput)">
-          </div>
           
           <!--<div *ngIf="selectedFile" class="img-preview-container">
           

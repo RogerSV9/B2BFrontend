@@ -35,7 +35,7 @@ export class ProfilePage implements OnInit {
         this.user._id = '';
       }
     });
-    this.user._id = "5caf128799d1b20ba9d761e2"
+    this.user._id = localStorage.getItem('id')
     this.getUserDetail(this.user._id);
 
   }
@@ -47,19 +47,8 @@ export class ProfilePage implements OnInit {
       console.log(this.user) 
     });
   }
-  private onSuccess() {
-    this.selectedFile.pending = false;
-    this.selectedFile.status = 'ok';
-  }
-
-  private onError() {
-    this.selectedFile.pending = false;
-    this.selectedFile.status = 'fail';
-    this.selectedFile.src = '';
-  }
 
   processFile(imageInput: any) {
-    this.imageService.passid(this.user._id)
     const file: File = imageInput.files[0];
     const reader = new FileReader();
 
@@ -68,18 +57,17 @@ export class ProfilePage implements OnInit {
       this.selectedFile = new ImageSnippet(event.target.result, file);
 
       this.selectedFile.pending = true;
-      this.imageService.uploadImage(this.selectedFile.file).subscribe(
+      this.imageService.uploadImage(this.selectedFile.file, this.user._id).subscribe(
         (res) => {
-          this.onSuccess();
           console.log(res)
+          window.location.reload()
         },
         (err) => {
-          this.onError();
           console.log(err)
+          window.location.reload()
         })
     });
     reader.readAsDataURL(file);
-    
   }
 
   public ageFromDateOfBirthday(dateOfBirth: any): number{

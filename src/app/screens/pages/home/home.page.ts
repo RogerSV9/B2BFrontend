@@ -16,20 +16,13 @@ let userid;
 export class HomePage implements OnInit {
   
   user: User;
+  userDestId: string;
 
   constructor(private userService: UserService, private router: Router, private activatedRouter: ActivatedRoute) { 
     this.user= new User();
   }
 
   ngOnInit() {
-    this.activatedRouter.params.subscribe(params =>{
-      if (typeof params ['id'] !== 'undefined'){
-        this.user._id = params['id'];
-      }
-      else{
-        this.user._id = '';
-      }
-    });
     userid = this.user._id;
     this.UsersList();
   }
@@ -39,6 +32,7 @@ export class HomePage implements OnInit {
     stages: [{
         percent: -20,
         action: (event, inst) => {
+            this.acceptMatch(this.userDestId)
             inst.remove(event.target);
             return false;
         }
@@ -52,22 +46,6 @@ export class HomePage implements OnInit {
     
 };
 
-cycleSettings: MbscListviewOptions = {
-    stages: [{
-        percent: -20,
-        action: (event, inst) => {
-            inst.move(event.target, 0);
-            return false;
-        }
-    }, {
-        percent: 20,
-        action: (event, inst) => {
-            inst.move(event.target, 0);
-            return false;
-        }
-    }],
-    
-};
   goBack() {
     localStorage.removeItem('token');
     this.router.navigateByUrl('/login');
