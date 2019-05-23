@@ -4,6 +4,7 @@ import { ImageService } from "../../../services/image.service";
 import { User } from "../../../models/user";
 import { ActivatedRoute } from '@angular/router';
 import * as moment from 'moment';
+import { Rating } from '@mobiscroll/angular/src/js/classes/rating';
 
 class ImageSnippet {
   pending: boolean = false;
@@ -16,12 +17,30 @@ class ImageSnippet {
   selector: 'app-profile',
   templateUrl: './profile.page.html',
   styleUrls: ['./profile.page.scss'],
+  styles: [`
+    .star {
+      position: relative;
+      display: inline-block;
+      font-size: 3rem;
+      color: #d3d3d3;
+    }
+    .full {
+      color: red;
+    }
+    .half {
+      position: absolute;
+      display: inline-block;
+      overflow: hidden;
+      color: red;
+    }
+  `]
 })
 export class ProfilePage implements OnInit {
 
   user: User;
   selectedFile: ImageSnippet;
   age: number;
+  currentRate: number;
 
   constructor(private activatedRoute: ActivatedRoute, private userService: UserService, private imageService: ImageService) { 
     this.user= new User();
@@ -37,13 +56,14 @@ export class ProfilePage implements OnInit {
     });
     this.user._id = localStorage.getItem('id')
     this.getUserDetail(this.user._id);
-
   }
   getUserDetail(_id: string){
     this.userService.getUsersDetail(_id)
     .subscribe(res =>{
       this.user = res;
       this.age = this.ageFromDateOfBirthday(this.user.age)
+      this.currentRate = this.getaveragerating(this.user.ratings)
+      console.log(this.user.ratings)
       console.log(this.user) 
     });
   }
@@ -75,5 +95,18 @@ export class ProfilePage implements OnInit {
     console.log(date)
     return moment().diff(date, 'years');
     //return moment(dateOfBirth, 'years').fromNow()
+  }
+
+  getaveragerating(ratings: number[]){
+    /*let sum = ratings.reduce((previous, current) => current += previous);
+    let avg = sum / ratings.length;
+    console.log("AVG",avg)*/
+    let sum = 0;
+    for (let i = 0; i < ratings.length; i++){
+      sum = sum + ratings[i]
+    }
+    let avg = sum/ratings.length
+    console.log(avg)
+    return avg;
   }
 }

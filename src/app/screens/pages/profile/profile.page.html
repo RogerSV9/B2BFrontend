@@ -43,24 +43,17 @@
     </ion-card-header>
   
     <ion-card-content>
+          <ng-template #t let-fill="fill">
+            <span class="star" [class.full]="fill === 100">
+              <span class="half" [style.width.%]="fill">&hearts;</span>&hearts;
+            </span>
+          </ng-template>
           
-          <!--<div *ngIf="selectedFile" class="img-preview-container">
+          <ngb-rating [(rate)]="currentRate" [starTemplate]="t" [readonly]="true" max="5"></ngb-rating>
           
-            <div class="img-preview{{selectedFile.status === 'fail' ? '-error' : ''}}"
-                 [ngStyle]="{'background-image': 'url('+ selectedFile.src + ')'}">
-            </div>
-          
-            <div *ngIf="selectedFile.pending" class="img-loading-overlay">
-              <div class="img-spinning-circle"></div>
-            </div>
-         
-            <div *ngIf="selectedFile.status === 'ok'" class="alert alert-success"> Image Uploaded Succesfuly!</div>
-            <div *ngIf="selectedFile.status === 'fail'" class="alert alert-danger"> Image Upload Failed!</div>
-          </div>-->
+          <hr>
+          <pre>Rate: <b>{{currentRate}}</b></pre>
           {{user.description}}
-          <br>
-          <br>
-          <iframe src="https://open.spotify.com/embed/user/spotify/playlist/37i9dQZF1DXaxEKcoCdWHD" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
     </ion-card-content>
   </ion-card>
   

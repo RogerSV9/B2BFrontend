@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { IonicModule } from '@ionic/angular';
 
@@ -19,8 +20,11 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     IonicModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    NgbModule
   ],
-  declarations: [ProfilePage]
+  declarations: [ProfilePage, ProfilePage],
+  exports: [ProfilePage],
+  bootstrap: [ProfilePage]
 })
 export class ProfilePageModule {}

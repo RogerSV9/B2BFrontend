@@ -10,11 +10,12 @@ export class User {
     password: string;
     //picture: string;
     passwordrepeat: string;
+    ratings: number[];
     
     
 
 
-    constructor(_id = '', name = '',surname = '',username = '', email = '',  age = '', description = '', localization = '', password = '', passwordrepeat = '') {
+    constructor(_id = '', name = '',surname = '',username = '', email = '',  age = '', description = '', localization = '', password = '', passwordrepeat = '', ratings = [0]) {
         this._id = _id;
         this.name=name;
         this.surname=surname; 
@@ -25,7 +26,8 @@ export class User {
         this.localization=localization;
         this.password=password;
         this.passwordrepeat=passwordrepeat;
-       //this.picture=pictute;
+        this.ratings = ratings;
+        //this.picture=picture;
         
     }
 }
