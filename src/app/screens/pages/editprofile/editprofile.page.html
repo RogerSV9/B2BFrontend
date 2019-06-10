@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Profile edit</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-label>Name</ion-label>
+    <ion-input value="{{user.name}}" [(ngModel)]="modifieduser.name"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Surname</ion-label>
+    <ion-input value="{{user.surname}}" [(ngModel)]="modifieduser.surname"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Username</ion-label>
+    <ion-input value="{{user.username}}" [(ngModel)]="modifieduser.username"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Password</ion-label>
+    <ion-input value="{{user.password}}" [(ngModel)]="modifieduser.password"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Email</ion-label>
+    <ion-input value="{{user.email}}" [(ngModel)]="modifieduser.email"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Description</ion-label>
+    <ion-input value="{{user.description}}" [(ngModel)]="modifieduser.description"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Localization</ion-label>
+    <ion-input value="{{user.localization}}" [(ngModel)]="modifieduser.localization"></ion-input>
+  </ion-item>
+  <ion-button color="danger" (click)="cancel()">Cancel</ion-button>
+  <ion-button color="success" (click)="accept()">Submit</ion-button>
+</ion-content>

@@ -21,7 +21,7 @@ export class UserService {
   signin(user: User)  {
     return this.http.post(this.environment.urlUser + '/signInUser', user);
    }
-   signup(user: User) {
+  signup(user: User) {
     return this.http.post(this.environment.urlUser + '/register', user);
   }
   getUsers() {
@@ -34,8 +34,10 @@ export class UserService {
     return this.http.post(this.environment.urlUser +'/availablematches/', {"_id": _id});
   }
   acceptMatch(userSourceId: string, userDestId: string) {
-
     return this.http.post(this.environment.urlUser + '/acceptmatch', {"userSourceId": userSourceId, "userDestId": userDestId});
+  }
+  UpdateUser(user: User){
+    return this.http.put(this.environment.urlUser + '/users', user)
   }
 
 }

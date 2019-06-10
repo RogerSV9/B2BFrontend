@@ -14,6 +14,7 @@ const routes: Routes = [
   { path: 'home', loadChildren: './screens/pages/home/home.module#HomePageModule' },
   { path: 'events', loadChildren: './screens/pages/events/events.module#EventsPageModule' },
   { path: 'screens', canActivate: [AuthGuard], loadChildren: './screens/screen-routing.module#ScreenRoutingModule' },
+  { path: 'editprofile', loadChildren: './screens/pages/editprofile/editprofile.module#EditprofilePageModule' },
 
 ];
 

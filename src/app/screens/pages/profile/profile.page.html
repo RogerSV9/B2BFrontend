@@ -12,6 +12,9 @@
            accept="image/*"
            (change)="processFile(imageInput)">
   </div>
+  <ion-button routerLink='/editprofile'>
+    <ion-icon slot="start" name="build"></ion-icon>
+  </ion-button>
   </ion-toolbar>
 </ion-header>
 
@@ -28,7 +31,12 @@
           {{tag}}
         </ion-item>
       </ion-list>-->
-      <ion-grid>
+      <br>
+      <ion-label>Tags:</ion-label>
+      <ion-chip *ngFor="let tag of user.tag">
+          <ion-label color="primary">#{{tag}}</ion-label>
+        </ion-chip>
+      <!--<ion-grid>
           <ion-row>
               <ion-col>
                   Tags:
@@ -39,7 +47,7 @@
                   </div>
             </ion-col>
           </ion-row>
-        </ion-grid>  
+        </ion-grid>  -->
     </ion-card-header>
   
     <ion-card-content>

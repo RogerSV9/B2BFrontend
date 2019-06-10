@@ -1,4 +1,3 @@
-import { MbscModule } from '@mobiscroll/angular';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
@@ -19,8 +18,7 @@ import { IonicStorageModule } from '@ionic/storage';
   declarations: [AppComponent],
   entryComponents: [],
   imports: [
-    NgbModule, 
-    MbscModule, 
+    NgbModule,
     BrowserModule, 
     IonicModule.forRoot(), 
     AppRoutingModule, 
