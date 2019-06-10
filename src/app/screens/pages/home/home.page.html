@@ -26,25 +26,4 @@
 
 
    <ion-content>
-      <mbsc-page>
-          <mbsc-note primary>
-          </mbsc-note>
-          
-          <mbsc-listview [options]="listSettings" class="custom-card-deck">
-          
-              <mbsc-listview-item *ngFor="let user of userService.user">
-                  <mbsc-card class="custom-card custom-card-rotate-right">
-                      <mbsc-card-header>
-                          <mbsc-card-title>{{user.username}}</mbsc-card-title>
-                          <mbsc-card-subtitle>{{user.name}}</mbsc-card-subtitle>
-                      </mbsc-card-header>
-                      <mbsc-card-content>
-                              {{user.email}}
-                      </mbsc-card-content>
-                      <ion-button color="primary" (click)="acceptMatch(user._id)">Accept</ion-button>
-                      <ion-button color="secondary">Reject</ion-button>
-                  </mbsc-card>
-              </mbsc-listview-item>
-          </mbsc-listview>
-      </mbsc-page>
   </ion-content>

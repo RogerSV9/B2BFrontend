@@ -80,11 +80,11 @@ export class ProfilePage implements OnInit {
       this.imageService.uploadImage(this.selectedFile.file, this.user._id).subscribe(
         (res) => {
           console.log(res)
-          window.location.reload()
+          //window.location.reload()
         },
         (err) => {
           console.log(err)
-          window.location.reload()
+          //window.location.reload()
         })
     });
     reader.readAsDataURL(file);

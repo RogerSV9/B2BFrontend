@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
 import { User } from 'src/app/models/user';
-import { mobiscroll, MbscListviewOptions } from '@mobiscroll/angular';
 
 let userid;
 
@@ -26,25 +25,6 @@ export class HomePage implements OnInit {
     userid = this.user._id;
     this.UsersList();
   }
-
-
-  listSettings: MbscListviewOptions = {
-    stages: [{
-        percent: -20,
-        action: (event, inst) => {
-            this.acceptMatch(this.userDestId)
-            inst.remove(event.target);
-            return false;
-        }
-    }, {
-        percent: 20,
-        action: (event, inst) => {
-            inst.remove(event.target);
-            return false;
-        }
-    }],
-    
-};
 
   goBack() {
     localStorage.removeItem('token');
