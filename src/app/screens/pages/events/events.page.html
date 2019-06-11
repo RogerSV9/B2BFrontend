@@ -1,33 +1,41 @@
 <ion-card class="background">
-    <ion-card-header>
-      <table>
+  <ion-card-header>
+    <table>
+    <tr>
+      <th></th>
+      <th>
+        <ion-card-title class="title">EVENTS</ion-card-title></th>
+      <th></th>
+      <th>  
+        <ion-button (click)="toNeweventPage()">
+            <ion-icon name="add-circle-outline"></ion-icon>           
+        </ion-button> 
+      </th>      
+    </tr>
+    </table>
+  </ion-card-header>
 
-      <tr>
-        <th></th>
-        <th><!-- <ion-card-title class="title">{{user.name}} {{user.surname}}, {{age}}</ion-card-title> -->
-          <ion-card-title class="title">EVENTS</ion-card-title></th>
-        <th></th>
-        <th>  
-          <ion-tab-button (click)="toCreateEventPage()" class=createButton>
-            <ion-icon name="add-circle-outline"></ion-icon>
-          </ion-tab-button> 
-        </th>      
-      </tr>
-      </table>
-    </ion-card-header>
-  
-    <ion-card-content>  
-    
-        <ion-card class=event>
-            <ion-card-title color= "light" class="EventTitle">Barcelona Beach Festival</ion-card-title>
-        
-        
-          <ion-card class=description>
-              <ion-tab-button class="myButton">JOIN</ion-tab-button>
-          </ion-card>
 
+  <ion-card-content>
+    <ion-card-title>EVENT</ion-card-title> 
+    <ion-button (click)=getEvents()></ion-button>
+    <ion-list>
+      <ion-item *ngFor="let event of eventsList">
+          <ion-card class=event>
+              <ion-card-title color= "light" class="EventTitle">{{ event.name }}</ion-card-title>
+              <ion-card-subtitle color= "light" class="EventDate">{{ event.date}}</ion-card-subtitle>
+              <ion-card-subtitle color= "light" class="EventLocation">{{ event.location }}</ion-card-subtitle>
+              <ion-card-subtitle color= "light" class="EventDescription">{{ event.description }}</ion-card-subtitle>         
           
-        </ion-card>
+            <ion-card class=description>
+                <ion-tab-button class="myButton">JOIN</ion-tab-button>
+            </ion-card>
   
-    </ion-card-content>
-  </ion-card>
+            </ion-card>
+
+      </ion-item>
+    </ion-list>
+  
+
+  </ion-card-content>
+</ion-card>
