@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
 import { User } from 'src/app/models/user';
+import * as moment from 'moment';
+
 
 let userid;
 
@@ -18,6 +20,8 @@ export class HomePage implements OnInit {
   cardsList: User[] = [];
   onecard: User;
   counter: number;
+  age: number;
+
 
   constructor(private userService: UserService, 
               private router: Router, 
@@ -63,6 +67,7 @@ export class HomePage implements OnInit {
   this.counter=this.counter
   console.log("SOC"+this.counter)
   this.onecard = this.cardsList[this.counter];
+  this.age = this.ageFromDateOfBirthday(this.onecard.age)
 
   /* for (let i in this.cardsList){
     this.onecard = this.cardsList[i];
@@ -71,12 +76,14 @@ export class HomePage implements OnInit {
   }
 
 
-  acceptMatch(userDestId: string){
+  acceptMatch(){
 
-    let userSourceId = localStorage.getItem('id');  
+    let userSourceId = localStorage.getItem('id'); 
+    this.userDestId = this.onecard._id;
     console.log("Source"+userSourceId)
-    console.log("Dest"+userDestId)  
-    this.userService.acceptMatch(userSourceId, userDestId)
+    console.log("Dest"+this.userDestId)
+    console.log("source: "+userSourceId)
+    this.userService.acceptMatch(userSourceId, this.userDestId)
     .subscribe(res => {
       if (this.counter < this.cardsList.length-1) {
         this.counter++;
@@ -101,5 +108,12 @@ export class HomePage implements OnInit {
       this.ShowOneCard();
     }   
     //console.log("DM2"+this.counter)
+  }
+
+  public ageFromDateOfBirthday(dateOfBirth: any): number{
+    var date = moment(dateOfBirth, "YYYY-MM-DD")
+    console.log(date)
+    return moment().diff(date, 'years');
+    //return moment(dateOfBirth, 'years').fromNow()
   }
 }
