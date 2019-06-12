@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
 import { User } from 'src/app/models/user';
 import * as moment from 'moment';
+import { AlertController } from '@ionic/angular';
 
 
 let userid;
@@ -25,7 +26,8 @@ export class HomePage implements OnInit {
 
   constructor(private userService: UserService, 
               private router: Router, 
-              private activatedRouter: ActivatedRoute) { 
+              private activatedRouter: ActivatedRoute,
+              public alertController: AlertController) {
     this.user= new User();
     this.counter=0;
   }
@@ -89,6 +91,11 @@ export class HomePage implements OnInit {
         this.counter++;
         this.ShowOneCard();
       }
+      else if (this.counter === this.cardsList.length-1){
+        this.accept();
+        this.counter=0;
+        this.ShowOneCard();
+      }  
       else {
         this.counter=0;
         this.ShowOneCard();
@@ -98,22 +105,43 @@ export class HomePage implements OnInit {
   }
 
   discardMatch(){
-    //console.log("DM1"+this.counter)
+    console.log("DM1"+this.counter)
     if (this.counter < this.cardsList.length-1) {
       this.counter++;
       this.ShowOneCard();
     }
-    else {
+    else if (this.counter === this.cardsList.length-1){
+      this.accept();
       this.counter=0;
       this.ShowOneCard();
-    }   
-    //console.log("DM2"+this.counter)
+    }
+    else{
+      this.counter=0;
+      this.ShowOneCard();
+    }
+    console.log("DM2"+this.counter)
   }
 
   public ageFromDateOfBirthday(dateOfBirth: any): number{
     var date = moment(dateOfBirth, "YYYY-MM-DD")
     console.log(date)
     return moment().diff(date, 'years');
-    //return moment(dateOfBirth, 'years').fromNow()
+    }
+
+  async accept(){
+    const alert = await this.alertController.create({
+      header: 'Submit alert',
+      message: 'There are no no possible matches',
+      buttons: [
+        {
+          text: 'OK',
+          handler: () => {
+            console.log('Confirm Okay');
+          }
+        }
+      ]
+    });
+
+    await alert.present();
   }
 }
