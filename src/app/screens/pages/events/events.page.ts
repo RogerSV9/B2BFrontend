@@ -8,6 +8,10 @@ import { Event } from 'src/app/models/event';
   templateUrl: './events.page.html',
   styleUrls: ['./events.page.scss'],
 })
+
+
+
+
 export class EventsPage implements OnInit {
   eventsList: Event[] = []
   constructor(private router: Router,

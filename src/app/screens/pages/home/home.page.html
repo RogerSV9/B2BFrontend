@@ -1,29 +1,13 @@
-<!-- <ion-card class="background">
-  <ion-card-header> -->
-    <!-- <ion-card-title class="title">{{user.name}} {{user.surname}}, {{age}}</ion-card-title> -->
-<!--     <ion-card-title class="title">Reva Dhawan, 20</ion-card-title>
-  </ion-card-header> -->
+<ion-card class="background">
+<ion-card-content>    
+   <!--  <ion-item *ngFor="let user of userService.user"> -->
+      <ion-item>
+            <ion-card-title class="title">{{ onecard?.name }}, {{ onecard?.age }}</ion-card-title>
+            <!-- <ion-card-subtitle>Username:{{ onecard?.username }}</ion-card-subtitle> -->
+            <!--  <img src="{onecard?.picture}}"> -->
+   </ion-item>
 
-<!-- <ion-content padding>
-    
-   <ion-list>
-     <ion-item *ngFor="let user of userService.user">
-        <ion-card>
-            <ion-card-header>
-              <ion-card-subtitle>{{user.username}}</ion-card-subtitle>
-              <ion-card-title>{{user.age}}</ion-card-title>
-            </ion-card-header>
-          
-            <ion-card-content>
-                {{user.email}}
-            </ion-card-content>
-          </ion-card>
-     </ion-item>
-   </ion-list>
-   </ion-content>
- -->
-   
-
-
-   <ion-content>
-  </ion-content>
+  <ion-icon class="dislike" name="close" (click)="discardMatch()"></ion-icon>
+  <ion-icon class="like" name="heart" (click)="acceptMatch()"></ion-icon>
+</ion-card-content>
+</ion-card>
