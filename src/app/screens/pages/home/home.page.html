@@ -1,13 +1,21 @@
-<ion-card class="background">
-<ion-card-content>    
-   <!--  <ion-item *ngFor="let user of userService.user"> -->
-      <ion-item>
-            <ion-card-title class="title">{{ onecard?.name }}, {{ onecard?.age }}</ion-card-title>
-            <!-- <ion-card-subtitle>Username:{{ onecard?.username }}</ion-card-subtitle> -->
-            <!--  <img src="{onecard?.picture}}"> -->
-   </ion-item>
+<ion-content class="background">
+      <ion-grid style="height: 100%">
+            <ion-row justify-content-center align-items-center style="height: 100%">
+               <ion-card class="background">
+               <ion-card-header>
+                     <img src="{{onecard?.picture}}">
+                  <ion-card-title>{{onecard?.name }} {{onecard?.surname }}, {{age }}</ion-card-title>
 
-  <ion-icon class="dislike" name="close" (click)="discardMatch()"></ion-icon>
-  <ion-icon class="like" name="heart" (click)="acceptMatch()"></ion-icon>
-</ion-card-content>
-</ion-card>
+                   <ion-label></ion-label>
+                  <ion-chip *ngFor="let tag of onecard?.tag">
+                     <ion-label color="primary">#{{tag}}</ion-label>
+                     </ion-chip>
+                     <div padding>
+                     <ion-icon class="dislike" name="close" (click)="discardMatch()"></ion-icon>
+                     <ion-icon class="like" name="heart" (click)="acceptMatch()"></ion-icon>
+                     </div>
+               </ion-card-header>
+               </ion-card>
+   </ion-row>
+</ion-grid>
+</ion-content>
