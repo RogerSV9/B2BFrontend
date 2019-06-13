@@ -1,14 +1,12 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>chat</ion-title>
-  </ion-toolbar>
-</ion-header>
+<div class="main-container--chat">
+  <div class="message-box-container">
+    <div *ngFor="let message of messages">
+      {{message}}
+    </div>
+  </div>
 
-<ion-content>
-<h1>hola</h1>
-</ion-content>
-
-
-<ion-button shape="round" (click)="goBack()">Log out</ion-button>
-<!-- <ion-button shape="round" routerLink='/profile'>Profile</ion-button>
-<ion-button shape="round" routerLink='/menu'>Menu</ion-button> -->
+  <div class="chat-input">
+    <input [(ngModel)]="message" (keyup)="$event.keyCode == 13 && sendMessage()"/>
+    <button (click)="sendMessage()">Send</button>
+  </div>
+</div>
