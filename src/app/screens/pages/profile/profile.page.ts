@@ -35,7 +35,7 @@ class ImageSnippet {
     }
   `]
 })
-export class ProfilePage implements OnInit {
+export class ProfilePage implements OnInit{
 
   user: User;
   selectedFile: ImageSnippet;
@@ -80,11 +80,11 @@ export class ProfilePage implements OnInit {
       this.imageService.uploadImage(this.selectedFile.file, this.user._id).subscribe(
         (res) => {
           console.log(res)
-          window.location.reload()
+          //window.location.reload()
         },
         (err) => {
           console.log(err)
-          window.location.reload()
+          //window.location.reload()
         })
     });
     reader.readAsDataURL(file);
@@ -108,5 +108,24 @@ export class ProfilePage implements OnInit {
     let avg = sum/ratings.length
     console.log(avg)
     return avg;
+  }
+
+  ionViewWillEnter(){
+      this.user._id = localStorage.getItem('id')
+      this.getUserDetail(this.user._id);
+  }
+
+  ionViewDidLoad(){
+      this.user._id = localStorage.getItem('id')
+      this.getUserDetail(this.user._id);
+  }
+
+  ionViewDidEnter(){
+      this.user._id = localStorage.getItem('id')
+      this.getUserDetail(this.user._id);
+  }
+
+  refresh(){
+    window.location.reload()
   }
 }

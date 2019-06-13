@@ -12,6 +12,9 @@
            accept="image/*"
            (change)="processFile(imageInput)">
   </div>
+  <ion-button routerLink='/editprofile'>
+    <ion-icon slot="start" name="build"></ion-icon>
+  </ion-button>
   </ion-toolbar>
 </ion-header>
 
@@ -21,14 +24,22 @@
         <img src="{{user.picture}}">
       <ion-card-subtitle>{{user.username}}</ion-card-subtitle>
       <ion-card-title>{{user.name}} {{user.surname}}, {{age}}</ion-card-title>
-      <ion-icon name="pin"></ion-icon>
-      {{user.localization}}
+      <ion-chip>
+        <ion-icon name="pin" color="primary"></ion-icon>
+        <ion-label>{{user.localization}}</ion-label>
+      </ion-chip>
       <!--<ion-list>
       <ion-item *ngFor="let tag of user.tag">
           {{tag}}
         </ion-item>
       </ion-list>-->
-      <ion-grid>
+      <br>
+      <ion-label>Tags:</ion-label>
+      <ion-chip class="chip" *ngFor="let tag of user.tag">
+          <ion-label>#{{tag}}</ion-label>
+          <!--<ion-icon name="close" (click)="refresh()"></ion-icon>-->
+        </ion-chip>
+      <!--<ion-grid>
           <ion-row>
               <ion-col>
                   Tags:
@@ -39,7 +50,7 @@
                   </div>
             </ion-col>
           </ion-row>
-        </ion-grid>  
+        </ion-grid>  -->
     </ion-card-header>
   
     <ion-card-content>
@@ -48,10 +59,8 @@
               <span class="half" [style.width.%]="fill">&hearts;</span>&hearts;
             </span>
           </ng-template>
-          
           <ngb-rating [(rate)]="currentRate" [starTemplate]="t" [readonly]="true" max="5"></ngb-rating>
-          
-          <hr>
+          <!--<hr>-->
           <pre>Rate: <b>{{currentRate}}</b></pre>
           {{user.description}}
     </ion-card-content>

@@ -21,21 +21,23 @@ export class UserService {
   signin(user: User)  {
     return this.http.post(this.environment.urlUser + '/signInUser', user);
    }
-   signup(user: User) {
+  signup(user: User) {
     return this.http.post(this.environment.urlUser + '/register', user);
   }
-  getUsers() {
+  getUsers(){
     return this.http.get(this.environment.urlUser + '/users');
   }
   getUsersDetail(_id: string): Observable<User>{
     return this.http.get<User>(this.environment.urlUser +`/users/info/${_id}`);
   }
-  UsersList(_id: string){
-    return this.http.post(this.environment.urlUser +'/availablematches/', {"_id": _id});
+  UsersList(user: User): Observable<User[]>{
+    return this.http.post<User[]>(this.environment.urlUser +'/availablematches/', user);
   }
   acceptMatch(userSourceId: string, userDestId: string) {
-
     return this.http.post(this.environment.urlUser + '/acceptmatch', {"userSourceId": userSourceId, "userDestId": userDestId});
+  }
+  UpdateUser(user: User){
+    return this.http.put(this.environment.urlUser + '/users', user)
   }
 
 }

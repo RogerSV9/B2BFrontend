@@ -3,7 +3,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  //{ path: '', redirectTo: 'home', pathMatch: 'full' },
   // { path: 'home', loadChildren: './home/home.module#HomePageModule' },
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', loadChildren: './public/login/login.module#LoginPageModule' },
@@ -13,7 +13,9 @@ const routes: Routes = [
   { path: 'chat', loadChildren: './screens/pages/chat/chat.module#ChatPageModule' },
   { path: 'home', loadChildren: './screens/pages/home/home.module#HomePageModule' },
   { path: 'events', loadChildren: './screens/pages/events/events.module#EventsPageModule' },
+  { path: 'newevent', loadChildren: './screens/pages/newevent/newevent.module#NeweventPageModule' },
   { path: 'screens', canActivate: [AuthGuard], loadChildren: './screens/screen-routing.module#ScreenRoutingModule' },
+  { path: 'editprofile', loadChildren: './screens/pages/editprofile/editprofile.module#EditprofilePageModule' },
 
 ];
 

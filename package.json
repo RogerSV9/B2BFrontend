@@ -31,6 +31,8 @@
     "bootstrap": "^4.3.1",
     "cordova-android": "8.0.0",
     "core-js": "^2.5.4",
+    "ionic-angular": "^3.9.6",
+    "mobiscroll": "^3.0.0-beta6",
     "moment": "^2.24.0",
     "rxjs": "^6.5.2",
     "rxjs-compat": "^6.5.2",

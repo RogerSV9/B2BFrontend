@@ -1,50 +1,21 @@
-<!-- <ion-card class="background">
-  <ion-card-header> -->
-    <!-- <ion-card-title class="title">{{user.name}} {{user.surname}}, {{age}}</ion-card-title> -->
-<!--     <ion-card-title class="title">Reva Dhawan, 20</ion-card-title>
-  </ion-card-header> -->
+<ion-content class="background">
+      <ion-grid style="height: 100%">
+            <ion-row justify-content-center align-items-center style="height: 100%">
+               <ion-card class="background">
+               <ion-card-header>
+                     <img src="{{onecard?.picture}}">
+                  <ion-card-title>{{onecard?.name }} {{onecard?.surname }}, {{age }}</ion-card-title>
 
-<!-- <ion-content padding>
-    
-   <ion-list>
-     <ion-item *ngFor="let user of userService.user">
-        <ion-card>
-            <ion-card-header>
-              <ion-card-subtitle>{{user.username}}</ion-card-subtitle>
-              <ion-card-title>{{user.age}}</ion-card-title>
-            </ion-card-header>
-          
-            <ion-card-content>
-                {{user.email}}
-            </ion-card-content>
-          </ion-card>
-     </ion-item>
-   </ion-list>
-   </ion-content>
- -->
-   
-
-
-   <ion-content>
-      <mbsc-page>
-          <mbsc-note primary>
-          </mbsc-note>
-          
-          <mbsc-listview [options]="listSettings" class="custom-card-deck">
-          
-              <mbsc-listview-item *ngFor="let user of userService.user">
-                  <mbsc-card class="custom-card custom-card-rotate-right">
-                      <mbsc-card-header>
-                          <mbsc-card-title>{{user.username}}</mbsc-card-title>
-                          <mbsc-card-subtitle>{{user.name}}</mbsc-card-subtitle>
-                      </mbsc-card-header>
-                      <mbsc-card-content>
-                              {{user.email}}
-                      </mbsc-card-content>
-                      <ion-button color="primary" (click)="acceptMatch(user._id)">Accept</ion-button>
-                      <ion-button color="secondary">Reject</ion-button>
-                  </mbsc-card>
-              </mbsc-listview-item>
-          </mbsc-listview>
-      </mbsc-page>
-  </ion-content>
+                   <ion-label></ion-label>
+                  <ion-chip *ngFor="let tag of onecard?.tag">
+                     <ion-label color="primary">#{{tag}}</ion-label>
+                     </ion-chip>
+                     <div padding>
+                     <ion-icon class="dislike" name="close" (click)="discardMatch()"></ion-icon>
+                     <ion-icon class="like" name="heart" (click)="acceptMatch()"></ion-icon>
+                     </div>
+               </ion-card-header>
+               </ion-card>
+   </ion-row>
+</ion-grid>
+</ion-content>
