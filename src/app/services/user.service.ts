@@ -3,6 +3,7 @@ import { EnvironmentService } from './environment.service';
 import {HttpClient} from "@angular/common/http";
 import { User } from "../models/user";
 import { Observable } from 'rxjs';
+import * as io from 'socket.io-client' ;
 
 @Injectable({
   providedIn: 'root'
@@ -12,12 +13,19 @@ export class UserService {
   environment: EnvironmentService;
   user: User[];
   selectedUser: User;
+  socket: SocketIOClient.Socket;
 
   constructor(private http: HttpClient) {
     this.selectedUser = new User();
     this.environment = new EnvironmentService();
   }
 
+  getsocket(){
+    return this.socket;
+  }
+  postsocket(socket: SocketIOClient.Socket){
+    this.socket=socket;
+  }
   signin(user: User)  {
     return this.http.post(this.environment.urlUser + '/signInUser', user);
    }

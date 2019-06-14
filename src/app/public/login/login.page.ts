@@ -4,6 +4,8 @@ import { FormBuilder, FormControl, FormGroup, Validators, NgForm  } from '@angul
 import { Router } from '@angular/router';
 import { User } from 'src/app/models/user';
 import { HttpErrorResponse } from '@angular/common/http';
+import * as io from 'socket.io-client' ;
+
 declare var FB: any;
 
 
@@ -19,7 +21,11 @@ export class LoginPage implements OnInit {
   loginForm: FormGroup;
   validation_messages: any;
   user: User;
-
+  socket: SocketIOClient.Socket;
+  name: string;
+  message: string;  
+  dest: string;
+  type: string;
   constructor(private userService: UserService, private router: Router,  private formBuilder: FormBuilder) {
     this.loginForm = this.formBuilder.group({
       username: new FormControl('', Validators.compose([
@@ -78,6 +84,14 @@ export class LoginPage implements OnInit {
             localStorage.setItem('token', token);
             user = res['username'];
             localStorage.setItem('id', user._id);
+            localStorage.setItem('username', user.username);
+            this.socket = io.connect('http://localhost:3000');
+            this.userService.postsocket(this.socket);
+            this.socket.emit('nickname', user.username);
+          //  console.log("Iniciando sesión en el chat como: " + this.user.username);
+          //  this.socket.emit('connected');
+           // this.socket.emit("chat", this.message, this.name, this.type, this.dest);
+                            
             this.router.navigateByUrl('/menu/home');
             
           },
