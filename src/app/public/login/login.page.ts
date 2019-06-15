@@ -1,10 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService} from '../../services/user.service';
+import { ChatService} from '../../services/chat.service';
 import { FormBuilder, FormControl, FormGroup, Validators, NgForm  } from '@angular/forms';
 import { Router } from '@angular/router';
 import { User } from 'src/app/models/user';
 import { HttpErrorResponse } from '@angular/common/http';
+<<<<<<< HEAD
 import { AuthenticationService } from 'src/app/services/authentication.service';
+=======
+import * as io from 'socket.io-client' ;
+import { from } from 'rxjs';
+
+>>>>>>> 2b434ad052a0f7af154aea312980df64a5e8f629
 declare var FB: any;
 
 
@@ -20,11 +27,21 @@ export class LoginPage implements OnInit {
   loginForm: FormGroup;
   validation_messages: any;
   user: User;
+<<<<<<< HEAD
 
   constructor(private userService: UserService, 
               private router: Router,  
               private formBuilder: FormBuilder,
               private authenticationService: AuthenticationService) {
+=======
+  usersocket: User;
+  socket: SocketIOClient.Socket;
+  name: string;
+  message: string;  
+  dest: string;
+  type: string;
+  constructor(private userService: UserService, private router: Router,  private formBuilder: FormBuilder, private chatService: ChatService) {
+>>>>>>> 2b434ad052a0f7af154aea312980df64a5e8f629
     this.loginForm = this.formBuilder.group({
       username: new FormControl('', Validators.compose([
         Validators.required,
@@ -35,7 +52,7 @@ export class LoginPage implements OnInit {
         Validators.pattern(/^(?=.*\d).{4,8}$/)]))
     } );
   }
-
+ 
   ngOnInit() {
     this.validation_messages = {
       'username': [
@@ -82,7 +99,24 @@ export class LoginPage implements OnInit {
             localStorage.setItem('token', token);
             user = res['username'];
             localStorage.setItem('id', user._id);
+<<<<<<< HEAD
             this.router.navigateByUrl('/menu/home');          },
+=======
+            localStorage.setItem('username', user.username);
+            this.socket = io.connect('http://localhost:3000');
+            this.chatService.socket= this.socket;
+
+         
+         
+            this.socket.emit('nickname', user.username);
+          //  console.log("Iniciando sesión en el chat como: " + this.user.username);
+            this.socket.emit('connected');
+           // this.socket.emit("chat", this.message, this.name, this.type, this.dest);
+                            
+            this.router.navigateByUrl('/menu/home');
+            
+          },
+>>>>>>> 2b434ad052a0f7af154aea312980df64a5e8f629
           err => {
             console.log(err);
             this.handleError(err);

@@ -10,6 +10,7 @@ const routes: Routes = [
   { path: 'home', loadChildren: './pages/home/home.module#HomePageModule' },
   { path: 'events', loadChildren: './pages/events/events.module#EventsPageModule' },  { path: 'newevent', loadChildren: './pages/newevent/newevent.module#NeweventPageModule' },
   { path: 'editprofile', loadChildren: './pages/editprofile/editprofile.module#EditprofilePageModule' },
+  { path: 'chat', loadChildren: './pages/chat/chat.module#ChatPageModule' },
 
 
 ];

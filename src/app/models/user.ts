@@ -1,3 +1,5 @@
+import * as io from 'socket.io-client' ;
+
 export class User {
     _id: string;
     name: string;
@@ -11,11 +13,12 @@ export class User {
     //picture: string;
     passwordrepeat: string;
     ratings: number[];
-    
+    tag: string[];
+    socket: SocketIOClient.Socket; 
     
 
 
-    constructor(_id = '', name = '',surname = '',username = '', email = '',  age = '', description = '', localization = '', password = '', passwordrepeat = '', ratings = [0]) {
+    constructor(_id = '', name = '',surname = '',username = '', email = '',  age = '', description = '', localization = '', password = '', passwordrepeat = '', ratings = [0], tag = ['']) {
         this._id = _id;
         this.name=name;
         this.surname=surname; 
@@ -27,6 +30,7 @@ export class User {
         this.password=password;
         this.passwordrepeat=passwordrepeat;
         this.ratings = ratings;
+        this.tag = tag;
         //this.picture=picture;
         
     }

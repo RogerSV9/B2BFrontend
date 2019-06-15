@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators, AbstractControl } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms'
-import { EventService } from 'src/app/services/Event.service';
+import { EventService } from 'src/app/services/event.service';
 import { Event } from 'src/app/models/event';
 import { Router } from '@angular/router';
 import { NavController } from '@ionic/angular';

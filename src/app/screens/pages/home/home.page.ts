@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
 import { User } from 'src/app/models/user';
+import * as moment from 'moment';
+import { AlertController } from '@ionic/angular';
+import { ChatService} from '../../../services/chat.service';
+
 
 let userid;
 
@@ -18,10 +22,14 @@ export class HomePage implements OnInit {
   cardsList: User[] = [];
   onecard: User;
   counter: number;
+  age: number;
+
 
   constructor(private userService: UserService, 
               private router: Router, 
-              private activatedRouter: ActivatedRoute) { 
+              private activatedRouter: ActivatedRoute,
+              public alertController: AlertController,
+              private chatService: ChatService) {
     this.user= new User();
     this.counter=0;
   }
@@ -63,6 +71,7 @@ export class HomePage implements OnInit {
   this.counter=this.counter
   console.log("SOC"+this.counter)
   this.onecard = this.cardsList[this.counter];
+  this.age = this.ageFromDateOfBirthday(this.onecard.age)
 
   /* for (let i in this.cardsList){
     this.onecard = this.cardsList[i];
@@ -71,35 +80,76 @@ export class HomePage implements OnInit {
   }
 
 
-  acceptMatch(userDestId: string){
+  acceptMatch(){
 
-    let userSourceId = localStorage.getItem('id');  
+    let userSourceId = localStorage.getItem('id'); 
+    this.userDestId = this.onecard._id;
+    let destiusername = this.onecard.username;
+
     console.log("Source"+userSourceId)
-    console.log("Dest"+userDestId)  
-    this.userService.acceptMatch(userSourceId, userDestId)
+    console.log("Dest"+this.userDestId)
+    console.log("source: "+userSourceId)
+    this.userService.acceptMatch(userSourceId, this.userDestId)
     .subscribe(res => {
       if (this.counter < this.cardsList.length-1) {
         this.counter++;
         this.ShowOneCard();
       }
+      else if (this.counter === this.cardsList.length-1){
+        this.accept();
+        this.counter=0;
+        this.ShowOneCard();
+      }  
       else {
         this.counter=0;
         this.ShowOneCard();
       }  
       console.log(res)
     });
+
+    this.chatService.userdest=destiusername;
+
+    this.router.navigateByUrl('/chat');
   }
 
   discardMatch(){
-    //console.log("DM1"+this.counter)
+    console.log("DM1"+this.counter)
     if (this.counter < this.cardsList.length-1) {
       this.counter++;
       this.ShowOneCard();
     }
-    else {
+    else if (this.counter === this.cardsList.length-1){
+      this.accept();
       this.counter=0;
       this.ShowOneCard();
-    }   
-    //console.log("DM2"+this.counter)
+    }
+    else{
+      this.counter=0;
+      this.ShowOneCard();
+    }
+    console.log("DM2"+this.counter)
+  }
+
+  public ageFromDateOfBirthday(dateOfBirth: any): number{
+    var date = moment(dateOfBirth, "YYYY-MM-DD")
+    console.log(date)
+    return moment().diff(date, 'years');
+    }
+
+  async accept(){
+    const alert = await this.alertController.create({
+      header: 'Submit alert',
+      message: 'There are no no possible matches',
+      buttons: [
+        {
+          text: 'OK',
+          handler: () => {
+            console.log('Confirm Okay');
+          }
+        }
+      ]
+    });
+
+    await alert.present();
   }
 }

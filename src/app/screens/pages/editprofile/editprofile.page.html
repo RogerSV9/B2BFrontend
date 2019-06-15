@@ -33,6 +33,21 @@
     <ion-label>Localization</ion-label>
     <ion-input value="{{user.localization}}" [(ngModel)]="modifieduser.localization"></ion-input>
   </ion-item>
+  <ion-label>Tags</ion-label>
+  <ion-chip *ngFor="let tag of modifieduser.tag; index as i">
+      <ion-label color="primary">#{{tag}}</ion-label>
+      <ion-icon name="close" (click)="deletetag(i)"></ion-icon>
+  </ion-chip>
+  <ion-item>
+      <ion-label>New tag</ion-label>
+      <ion-input [(ngModel)]="newtag"></ion-input>
+      <ion-icon name="add-circle" (click)="createtag(newtag)"></ion-icon>
+    </ion-item>
+  <br>
+  <br>
+  <br>
+  <div style="text-align:center;">
   <ion-button color="danger" (click)="cancel()">Cancel</ion-button>
   <ion-button color="success" (click)="accept()">Submit</ion-button>
+  </div>
 </ion-content>
