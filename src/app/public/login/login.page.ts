@@ -4,6 +4,7 @@ import { FormBuilder, FormControl, FormGroup, Validators, NgForm  } from '@angul
 import { Router } from '@angular/router';
 import { User } from 'src/app/models/user';
 import { HttpErrorResponse } from '@angular/common/http';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 declare var FB: any;
 
 
@@ -20,7 +21,10 @@ export class LoginPage implements OnInit {
   validation_messages: any;
   user: User;
 
-  constructor(private userService: UserService, private router: Router,  private formBuilder: FormBuilder) {
+  constructor(private userService: UserService, 
+              private router: Router,  
+              private formBuilder: FormBuilder,
+              private authenticationService: AuthenticationService) {
     this.loginForm = this.formBuilder.group({
       username: new FormControl('', Validators.compose([
         Validators.required,
@@ -78,14 +82,13 @@ export class LoginPage implements OnInit {
             localStorage.setItem('token', token);
             user = res['username'];
             localStorage.setItem('id', user._id);
-            this.router.navigateByUrl('/menu/home');
-            
-          },
+            this.router.navigateByUrl('/menu/home');          },
           err => {
             console.log(err);
             this.handleError(err);
           });
     }
+
     submitLogin(){
       console.log("submit login to facebook");
         FB.login((response)=>

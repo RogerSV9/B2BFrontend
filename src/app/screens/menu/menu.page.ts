@@ -25,6 +25,14 @@ export class MenuPage implements OnInit {
     this.router.navigate(['profile']);
   }
 
+  toEditprofilePage(){
+    this.router.navigate(['editprofile'])
+  }
+
+  toNeweventsPage(){
+    this.router.navigate(['newevents'])
+  }
+
   ngOnInit() {
   }
 

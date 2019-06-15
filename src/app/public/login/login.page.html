@@ -1,27 +1,30 @@
 <ion-content class="background">
   <div id="container">
-    <ion-card color="light" shape="round">
-      <ion-card-header color="dark" class="letra">LOGIN</ion-card-header>
+    <ion-card class="card">
+      <!-- <ion-card-header class="letra">LOGIN</ion-card-header> -->
   <ion-card-content>
   <form #form="ngForm" (ngSubmit)="login(form)">
     <ion-grid>
-      <ion-row color="primary" justify-content-center>
+      <ion-row justify-content-center>
         <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
           <br>
           <div padding>
-              <ion-title color="dark">BEAT2BEAT</ion-title>
             <ion-item>
-                <ion-label position="stacked">Username</ion-label>
+                <ion-label class="label" position="stacked">Username</ion-label>
               <ion-input name="username" type="username" minlength="3" maxlength="10" placeholder="" ngModel required></ion-input>
             </ion-item>
             <ion-item>
-                <ion-label position="stacked">Password</ion-label>
-              <ion-input name="password" type="password" minlength="3" maxlength="10" placeholder="" ngModel required></ion-input>
+                <ion-label class="label" position="stacked">Password</ion-label>
+                <ion-input name="password" type="password" minlength="3" maxlength="10" placeholder="" ngModel required></ion-input>
             </ion-item>
           </div>
           <div padding>
-            <ion-button size="large"  shape="round"  type="submit" [disabled]="form.invalid" expand="block">Login</ion-button>
+            <ion-button color="light" class="myButton"  type="submit" [disabled]="form.invalid" expand="block">LOGIN</ion-button>
           </div>
+          <button class="FacebookButton">      
+            <ion-icon  color="light" class="facebookLogo" shape="round" name="logo-facebook" md="logo-facebook" (click)="submitLogin()">Facebook login</ion-icon>
+            <ion-label class="facebookText" position="fixed"> Facebook Login</ion-label>
+          </button>
         </ion-col>
       </ion-row>
     </ion-grid>
@@ -30,18 +33,14 @@
   <!-- <ion-item >
       <ion-icon name="logo-facebook" shape="round" md="logo-facebook"></ion-icon>
   </ion-item> -->
-  <button>
-      
-      <ion-icon  color="primary" size="large"  shape="round" name="logo-facebook" md="logo-facebook" (click)="submitLogin()"></ion-icon>
-      <ion-label position="fixed" >Login amb FaceBook</ion-label>
-    </button>
 
-    
-  <ion-row>
+
+
+    <ion-row>
     <nav>
-    <div color="primary" text-center padding>
-      If you don't have an account, please <a routerLink='/register'>
-    register</a> first!
+    <div class= "optionText" text-center padding>
+     Don't you have an account? <a routerLink='/register'>
+    Sign In</a>
     </div>
   </nav>
 </ion-row>

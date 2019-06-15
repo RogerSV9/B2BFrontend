@@ -20,12 +20,13 @@
           </ion-tab-button>
   
           <!--Home-->    
-          <ion-tab-button class="size" (click)="toHomePage()" tab="home" class="myButton">
-                    </ion-tab-button>
+          <ion-tab-button class="size" (click)="toHomePage()" tab="home">
+              <ion-icon name="home"></ion-icon>
+          </ion-tab-button>
   
-          <!--Notifications-->
-          <ion-tab-button tab="notifications">
-              <ion-icon name="mail-unread"></ion-icon>
+          <!--Edit profile-->
+          <ion-tab-button tab="editprofile">
+              <ion-icon (click)="toEditprofilePage()" name="settings"></ion-icon>
           </ion-tab-button>
   
           <!--Profile-->    

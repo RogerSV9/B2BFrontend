@@ -10,8 +10,6 @@ import { Event } from 'src/app/models/event';
 })
 
 
-
-
 export class EventsPage implements OnInit {
   eventsList: Event[] = []
   constructor(private router: Router,
