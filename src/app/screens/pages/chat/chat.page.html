@@ -4,6 +4,26 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
 
+
+<ion-content>
+  <ion-item>
+    <ion-label>Chat with: {{destusername}}</ion-label>    
+  </ion-item>
+  <ion-item class ="sala">
+       <p *ngFor="let chat of sala">
+          {{chat}}
+      </p>
+  </ion-item>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="9"> <ion-input type="text" name="message" placeholder="Enter your message" [(ngModel)] = "message"></ion-input></ion-col>
+      <ion-col>
+        <ion-button id="enviar" class ="btn" (click)="sendMessage()"> Send </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+ 
+ 
 </ion-content>
+

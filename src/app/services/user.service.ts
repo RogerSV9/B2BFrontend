@@ -13,19 +13,14 @@ export class UserService {
   environment: EnvironmentService;
   user: User[];
   selectedUser: User;
-  socket: SocketIOClient.Socket;
+  public socket: SocketIOClient.Socket;
+  public users: User;
 
   constructor(private http: HttpClient) {
     this.selectedUser = new User();
     this.environment = new EnvironmentService();
   }
 
-  getsocket(){
-    return this.socket;
-  }
-  postsocket(socket: SocketIOClient.Socket){
-    this.socket=socket;
-  }
   signin(user: User)  {
     return this.http.post(this.environment.urlUser + '/signInUser', user);
    }

@@ -1,3 +1,5 @@
+import * as io from 'socket.io-client' ;
+
 export class User {
     _id: string;
     name: string;
@@ -12,7 +14,7 @@ export class User {
     passwordrepeat: string;
     ratings: number[];
     tag: string[];
-    
+    socket: SocketIOClient.Socket; 
     
 
 

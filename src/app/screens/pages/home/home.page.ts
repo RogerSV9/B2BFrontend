@@ -4,6 +4,7 @@ import { UserService } from 'src/app/services/user.service';
 import { User } from 'src/app/models/user';
 import * as moment from 'moment';
 import { AlertController } from '@ionic/angular';
+import { ChatService} from '../../../services/chat.service';
 
 
 let userid;
@@ -27,7 +28,8 @@ export class HomePage implements OnInit {
   constructor(private userService: UserService, 
               private router: Router, 
               private activatedRouter: ActivatedRoute,
-              public alertController: AlertController) {
+              public alertController: AlertController,
+              private chatService: ChatService) {
     this.user= new User();
     this.counter=0;
   }
@@ -82,6 +84,8 @@ export class HomePage implements OnInit {
 
     let userSourceId = localStorage.getItem('id'); 
     this.userDestId = this.onecard._id;
+    let destiusername = this.onecard.username;
+
     console.log("Source"+userSourceId)
     console.log("Dest"+this.userDestId)
     console.log("source: "+userSourceId)
@@ -102,6 +106,10 @@ export class HomePage implements OnInit {
       }  
       console.log(res)
     });
+
+    this.chatService.userdest=destiusername;
+
+    this.router.navigateByUrl('/chat');
   }
 
   discardMatch(){
