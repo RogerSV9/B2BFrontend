@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { EventService } from 'src/app/services/event.service';
 import { Event } from 'src/app/models/event';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-events',
@@ -15,20 +16,29 @@ export class EventsPage implements OnInit {
   searchTerm: string = "";
   eventsList: Event[];
   constructor(private router: Router,
-              private eventService: EventService) { }
+              private eventService: EventService,
+              private userService: UserService) { }
 
 
   toNeweventPage() {
     this.router.navigate(['newevent']);
   }
 
-  ngOnInit() {
+ 
+ ngOnInit() {
     this.getEvents();
     this.setFilteredItems();
   }
 
+  joinEvent(idEvent: string){
+    let _id = localStorage.getItem('id')
+    this.userService.postEventuser(_id, idEvent)
+  }
+
   getEvents(){
-    this.eventService.getEvents()
+    let userID = localStorage.getItem('id')
+    console.log(userID)
+    this.eventService.getEvents(userID)
       .subscribe(res => {
         this.eventsList = res;
         this.items = res;
