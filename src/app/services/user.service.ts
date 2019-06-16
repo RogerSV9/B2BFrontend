@@ -12,6 +12,7 @@ export class UserService {
 
   environment: EnvironmentService;
   user: User[];
+  event: Event[];
   selectedUser: User;
   public socket: SocketIOClient.Socket;
   public users: User;
@@ -40,7 +41,13 @@ export class UserService {
     return this.http.post(this.environment.urlUser + '/acceptmatch', {"userSourceId": userSourceId, "userDestId": userDestId});
   }
   UpdateUser(user: User){
-    return this.http.put(this.environment.urlUser + '/users', user)
+    return this.http.put(this.environment.urlUser + '/users', user);
+  }
+  postEventuser(idUser: string, idEvent: string){
+    return this.http.post(this.environment.urlUser + '/posteventuser', {"idUser": idUser, "idEvent": idEvent});
+  }
+  getUsersevents(_id: string): Observable<Event[]> {
+    return this.http.post<Event[]>(this.environment.urlUser + '/getuserevents', _id);
   }
 
 }

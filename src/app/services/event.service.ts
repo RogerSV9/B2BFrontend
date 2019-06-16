@@ -24,9 +24,9 @@ export class EventService {
     }
   
     //GET
-    getEvents(): Observable<Event[]> {
+    getEvents(_id: string): Observable<Event[]> {
       console.log("Get events")
-      return this.http.get<Event[]>(this.environment.urlUser + '/events');
+      return this.http.post<Event[]>(this.environment.urlUser + '/getevents', _id);
     }
   
     //DELETE
