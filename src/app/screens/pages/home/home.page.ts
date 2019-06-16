@@ -118,7 +118,7 @@ export class HomePage implements OnInit {
 
     this.chatService.userdest=destiusername;
 
-    this.router.navigateByUrl('/chat');
+    this.router.navigateByUrl('/menu/chat');
   }
 
   discardMatch(){

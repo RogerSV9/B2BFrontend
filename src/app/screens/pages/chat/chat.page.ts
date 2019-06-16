@@ -33,9 +33,6 @@ export class ChatPage implements OnInit {
   constructor(private chatService: ChatService,private userService: UserService, public alertController: AlertController) {
     this.usernamedestid=""
     this.user= new User();
-  //  this.socket= userService.getsocket();
-  //  console.log(this.socket);
-  //  this.socket.emit('connected');
     
    }
 
