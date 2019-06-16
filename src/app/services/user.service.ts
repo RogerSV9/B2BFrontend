@@ -22,6 +22,7 @@ export class UserService {
     this.environment = new EnvironmentService();
   }
 
+  
   signin(user: User)  {
     return this.http.post(this.environment.urlUser + '/signInUser', user);
    }
@@ -48,6 +49,12 @@ export class UserService {
   }
   getUsersevents(_id: string): Observable<User> {
     return this.http.post<User>(this.environment.urlUser + '/getuserevents', {"_id": _id});
+  }
+  postrating(id: String, rating: number) {
+    return this.http.post(this.environment.urlUser + '/postrating', {"id": id, "rating": rating});
+  }
+  getUserbyusername(username: String): Observable<User> {
+    return this.http.get<User>(this.environment.urlUser + `/users/${username}`);
   }
 
 }
