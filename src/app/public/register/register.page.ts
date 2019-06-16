@@ -82,7 +82,7 @@ export class RegisterPage implements OnInit {
   }
 
   register() {
-    let user = new User(null, this.registerForm.value.name, null, this.registerForm.value.username,this.registerForm.value.email, this.registerForm.value.age, null, null, this.registerForm.value.password, this.registerForm.value.confirmPassword);
+    let user = new User(null, this.registerForm.value.name, null, this.registerForm.value.username,this.registerForm.value.email, this.registerForm.value.firstName, null, null, this.registerForm.value.password, this.registerForm.value.confirmPassword, null, null);
     console.log(user);
     this.userService.signup(user)
       .subscribe(
