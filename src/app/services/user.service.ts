@@ -42,5 +42,11 @@ export class UserService {
   UpdateUser(user: User){
     return this.http.put(this.environment.urlUser + '/users', user)
   }
+  postrating(id: String, rating: number) {
+    return this.http.post(this.environment.urlUser + '/postrating', {"id": id, "rating": rating});
+  }
+  getUserbyusername(username: String): Observable<User> {
+    return this.http.get<User>(this.environment.urlUser + `/users/${username}`);
+  }
 
 }
