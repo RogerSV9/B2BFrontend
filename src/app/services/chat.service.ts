@@ -13,6 +13,7 @@ import * as io from 'socket.io-client' ;
 export class ChatService {
       socket: SocketIOClient.Socket;
       userdest: String;
+      myusername: string;
 
 
 }

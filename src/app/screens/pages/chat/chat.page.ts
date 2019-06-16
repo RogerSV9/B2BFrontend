@@ -16,9 +16,11 @@ export class ChatPage implements OnInit {
   socket: SocketIOClient.Socket;
   destusername: String;
   outputList: string[] = [];
-  message: String;
+  message: string;
   dest: String;
-  sala: string[] = [];
+  sala: String[] = [];
+  myusername: string;
+ 
 
   
     
@@ -34,18 +36,20 @@ export class ChatPage implements OnInit {
    }
 
   ngOnInit() {
+    this.myusername=this.chatService.myusername;
+    console.log("My username is:" + this.myusername);
     this.destusername= this.chatService.userdest;
     console.log(this.destusername);
     this.socket = this.chatService.socket;
     console.log('this is happening');
     console.log(this.socket);
     this.socket.emit('connected');
-    this.socket.on('chat', function(mensaje, dest){
+    this.socket.on('chat', function(username, mensaje, dest){
       
         
           if (dest == this.socket.id){
             console.log('Recibido');
-            this.sala.push(mensaje);        
+            this.sala.push(username +": "+mensaje);        
             
             }
          
@@ -74,7 +78,9 @@ export class ChatPage implements OnInit {
    
 }
 sendMessage(){
-  this.socket.emit("chat", this.message, this.dest);
+  this.socket.emit("chat", this.myusername, this.message, this.dest);
+  this.sala.push(this.myusername+": "+this.message);
+
 }
 
   

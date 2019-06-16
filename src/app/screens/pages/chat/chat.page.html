@@ -1,23 +1,26 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>chat</ion-title>
+    <ion-title>CHAT</ion-title>
   </ion-toolbar>
 </ion-header>
 
 
 
 <ion-content>
-  <ion-item>
+  
+  <ion-item color="medium">
     <ion-label>Chat with: {{destusername}}</ion-label>    
   </ion-item>
+
   <ion-item class ="sala">
-       <p *ngFor="let chat of sala">
-          {{chat}}
-      </p>
+   <div> 
+     <p *ngFor="let chat of sala">{{chat}}</p>
+  </div>
+
   </ion-item>
-  <ion-grid>
+<ion-grid>
     <ion-row>
-      <ion-col size="9"> <ion-input type="text" name="message" placeholder="Enter your message" [(ngModel)] = "message"></ion-input></ion-col>
+      <ion-col size="7"> <ion-input type="text" name="message" placeholder="Enter your message" [(ngModel)] = "message"></ion-input></ion-col>
       <ion-col>
         <ion-button id="enviar" class ="btn" (click)="sendMessage()"> Send </ion-button>
       </ion-col>

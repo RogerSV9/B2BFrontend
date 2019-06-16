@@ -29,6 +29,7 @@ export class LoginPage implements OnInit {
   message: string;  
   dest: string;
   type: string;
+
   constructor(private userService: UserService, private router: Router,  private formBuilder: FormBuilder, private chatService: ChatService) {
     this.loginForm = this.formBuilder.group({
       username: new FormControl('', Validators.compose([
@@ -87,7 +88,8 @@ export class LoginPage implements OnInit {
             localStorage.setItem('token', token);
             user = res['username'];
             localStorage.setItem('id', user._id);
-            localStorage.setItem('username', user.username);
+            this.chatService.myusername=user.username;
+            
             this.socket = io.connect('http://localhost:3000');
             this.chatService.socket= this.socket;
 
