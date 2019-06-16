@@ -11,7 +11,9 @@ import { Event } from 'src/app/models/event';
 
 
 export class EventsPage implements OnInit {
-  eventsList: Event[] = []
+  items: Event[];
+  searchTerm: string = "";
+  eventsList: Event[];
   constructor(private router: Router,
               private eventService: EventService) { }
 
@@ -21,18 +23,44 @@ export class EventsPage implements OnInit {
   }
 
   ngOnInit() {
-    console.log("ngOnInit")
-    this.getEvents()
-    console.log("ngOnInit2")
+    this.getEvents();
+    this.setFilteredItems();
   }
 
   getEvents(){
     this.eventService.getEvents()
       .subscribe(res => {
         this.eventsList = res;
-        console.log(res)
-        console.log("GET EVENTS")
+        this.items = res;
       })
   }
+
+  setFilteredItems() {
+    this.eventsList = this.filterItems(this.searchTerm);
+    console.log(this.eventsList)
+  }
+
+  filterItems(searchTerm) {
+    if(this.items){
+      return this.items.filter(function(event) {
+        return event.name.toLowerCase().indexOf(searchTerm.toLowerCase()) >= 0;
+      });
+    }
+  }
+
+ionViewWillEnter(){
+  this.getEvents();
+  this.setFilteredItems();
+}
+
+ionViewDidLoad(){
+  this.getEvents();
+  this.setFilteredItems();
+}
+
+ionViewDidEnter(){
+  this.getEvents();
+  this.setFilteredItems();
+}
 
 }

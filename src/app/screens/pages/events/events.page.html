@@ -5,7 +5,11 @@
          
   </ion-card-header>
 
-  <ion-content>    
+  <ion-content>
+      <ion-searchbar
+      [(ngModel)]="searchTerm"
+      (ionChange)="setFilteredItems()"
+    ></ion-searchbar>    
       <ion-item *ngFor="let event of eventsList">
           <ion-card color="dark" class="event">
               <ion-card-title class="EventTitle" color="white">{{ event.name }}</ion-card-title>
