@@ -41,9 +41,11 @@ export class ProfilePage implements OnInit{
   selectedFile: ImageSnippet;
   age: number;
   currentRate: number;
+  eventslist: User;
 
   constructor(private activatedRoute: ActivatedRoute, private userService: UserService, private imageService: ImageService) { 
-    this.user= new User();
+    this.user = new User();
+    this.eventslist = new User();
   }
   ngOnInit() {
     this.activatedRoute.params.subscribe(params =>{
@@ -56,6 +58,7 @@ export class ProfilePage implements OnInit{
     });
     this.user._id = localStorage.getItem('id')
     this.getUserDetail(this.user._id);
+    this.geteventsuser();
   }
   getUserDetail(_id: string){
     this.userService.getUsersDetail(_id)
@@ -108,6 +111,14 @@ export class ProfilePage implements OnInit{
     let avg = sum/ratings.length
     console.log(avg)
     return avg;
+  }
+
+  geteventsuser(){
+    let id = localStorage.getItem('id')
+    this.userService.getUsersevents(id)
+    .subscribe(res =>{
+      this.eventslist = res;
+    });
   }
 
   ionViewWillEnter(){
