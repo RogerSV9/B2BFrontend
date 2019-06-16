@@ -33,11 +33,13 @@ export class EventsPage implements OnInit {
   joinEvent(idEvent: string){
     let _id = localStorage.getItem('id')
     this.userService.postEventuser(_id, idEvent)
+    .subscribe(res => {
+      console.log(res)
+    })
   }
 
   getEvents(){
     let userID = localStorage.getItem('id')
-    console.log(userID)
     this.eventService.getEvents(userID)
       .subscribe(res => {
         this.eventsList = res;

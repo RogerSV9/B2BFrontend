@@ -43,11 +43,11 @@ export class UserService {
   UpdateUser(user: User){
     return this.http.put(this.environment.urlUser + '/users', user);
   }
-  postEventuser(idUser: string, idEvent: string){
-    return this.http.post(this.environment.urlUser + '/posteventuser', {"idUser": idUser, "idEvent": idEvent});
+  postEventuser(userid: string, eventid: string){
+    return this.http.post(this.environment.urlUser + '/posteventuser', {"userid": userid, "eventid": eventid});
   }
-  getUsersevents(_id: string): Observable<Event[]> {
-    return this.http.post<Event[]>(this.environment.urlUser + '/getuserevents', _id);
+  getUsersevents(_id: string): Observable<User> {
+    return this.http.post<User>(this.environment.urlUser + '/getuserevents', {"_id": _id});
   }
 
 }
