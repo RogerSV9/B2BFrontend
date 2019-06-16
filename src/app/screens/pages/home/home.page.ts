@@ -94,6 +94,7 @@ export class HomePage implements OnInit {
     let userSourceId = localStorage.getItem('id'); 
     this.userDestId = this.onecard._id;
     let destiusername = this.onecard.username;
+    localStorage.setItem('destid', this.onecard._id)
 
     console.log("Source"+userSourceId)
     console.log("Dest"+this.userDestId)
