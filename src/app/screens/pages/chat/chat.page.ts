@@ -5,6 +5,7 @@ import { UserService} from '../../../services/user.service';
 import { User } from 'src/app/models/user';
 import { ChatService } from 'src/app/services/chat.service';
 import { AlertController } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-chat',
@@ -30,7 +31,7 @@ export class ChatPage implements OnInit {
   
   
 
-  constructor(private chatService: ChatService,private userService: UserService, public alertController: AlertController) {
+  constructor(private chatService: ChatService,private userService: UserService, public alertController: AlertController, private router: Router,) {
     this.usernamedestid=""
     this.user= new User();
   //  this.socket= userService.getsocket();
@@ -177,6 +178,5 @@ const alert = await this.alertController.create({
 
 await alert.present();
 }
-
   
 }

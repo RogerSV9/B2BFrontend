@@ -23,6 +23,7 @@ export class HomePage implements OnInit {
   onecard: User;
   counter: number;
   age: number;
+  eventslist: User;
 
 
   constructor(private userService: UserService, 
@@ -31,6 +32,7 @@ export class HomePage implements OnInit {
               public alertController: AlertController,
               private chatService: ChatService) {
     this.user= new User();
+    this.eventslist = new User();
     this.counter=0;
   }
 
@@ -81,7 +83,10 @@ export class HomePage implements OnInit {
   this.age = this.ageFromDateOfBirthday(this.onecard.age)
   console.log(this.age)
 }
-
+    this.userService.getUsersevents(this.onecard._id)
+    .subscribe(res =>{
+      this.eventslist = res;
+    });
   /* for (let i in this.cardsList){
     this.onecard = this.cardsList[i];
     console.log(this.onecard)
@@ -176,9 +181,7 @@ export class HomePage implements OnInit {
         }
       ]
     });
-    
-
+  
     await alert.present();
   }
-
 }

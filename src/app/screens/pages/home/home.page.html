@@ -11,6 +11,14 @@
                      <ion-label color="primary">#{{tag}}</ion-label>
                      </ion-chip>
                      <div padding>
+                     <ion-list>
+                        <ion-label>Events:</ion-label>
+                      <ion-item *ngFor="let event of eventslist.events">
+                        <ion-label>{{event.name}}</ion-label>
+                      </ion-item>
+                    </ion-list>
+                  </div>
+                     <div padding>
                      <ion-icon class="dislike" name="close" (click)="discardMatch()"></ion-icon>
                      <ion-icon class="like" name="heart" (click)="acceptMatch()"></ion-icon>
                      </div>

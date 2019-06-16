@@ -9,21 +9,23 @@
 }
 
 ion-icon {
-    font-size: 50px;
-    --padding-top: 20px;
+    //font-size: 50px;
+    //--padding-top: 20px;
 }
 
 .dislike {
     color: rgb(3, 3, 19);
-    margin-left: 40px;
-    margin-right: 30px;
+    margin-left: 5%;
+    //margin-right: 20%;
+    font-size: 70px;
 }
 
 .like {
     color: rgb(124, 12, 12);
-    margin-left: 40px;
-    margin-right: 20px;
-
+    margin-left: 40%;
+    //margin-right: 10%;
+    margin-bottom: 3%;
+    font-size: 50px;
 }
 
 .tags {
