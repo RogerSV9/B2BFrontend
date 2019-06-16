@@ -11,7 +11,8 @@ const routes: Routes = [
   { path: 'events', loadChildren: './pages/events/events.module#EventsPageModule' },
   { path: 'newevent', loadChildren: './pages/newevent/newevent.module#NeweventPageModule' },
   { path: 'editprofile', loadChildren: './pages/editprofile/editprofile.module#EditprofilePageModule' },
-  { path: 'chat', loadChildren: './pages/chat/chat.module#ChatPageModule' },
+  { path: 'chat', loadChildren: './pages/chat/chat.module#ChatPageModule' },  { path: 'userprofile', loadChildren: './pages/userprofile/userprofile.module#UserprofilePageModule' },
+
 ];
 
 @NgModule({

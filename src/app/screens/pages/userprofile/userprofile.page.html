@@ -1,0 +1,64 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{user.name}} Profile</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="background-image">
+  <ion-card class="background">
+    <ion-card-header>
+        <img src="{{user.picture}}">
+      <ion-card-subtitle>{{user.username}}</ion-card-subtitle>
+      <ion-card-title>{{user.name}} {{user.surname}}, {{age}}</ion-card-title>
+      <ion-chip>
+        <ion-icon name="pin" color="primary"></ion-icon>
+        <ion-label>{{user.localization}}</ion-label>
+      </ion-chip>
+      <!--<ion-list>
+      <ion-item *ngFor="let tag of user.tag">
+          {{tag}}
+        </ion-item>
+      </ion-list>-->
+      <br>
+      <ion-label>Tags:</ion-label>
+      <ion-chip class="chip" *ngFor="let tag of user.tag">
+          <ion-label>#{{tag}}</ion-label>
+          <!--<ion-icon name="close" (click)="refresh()"></ion-icon>-->
+        </ion-chip>
+      <!--<ion-grid>
+          <ion-row>
+              <ion-col>
+                  Tags:
+              </ion-col>
+            <ion-col *ngFor="let tag of user.tag">
+                <div class="col-content">
+                    #{{tag}}
+                  </div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>  -->
+    </ion-card-header>
+  
+    <ion-card-content>
+          <ng-template #t let-fill="fill">
+            <span class="star" [class.full]="fill === 100">
+              <span class="half" [style.width.%]="fill">&hearts;</span>&hearts;
+            </span>
+          </ng-template>
+          <ngb-rating [(rate)]="currentRate" [starTemplate]="t" [readonly]="true" max="5"></ngb-rating>
+          <!--<hr>-->
+          <pre>Rate: <b>{{currentRate}}</b></pre>
+          {{user.description}}
+
+          <ion-list>
+              <ion-label>Events:</ion-label>
+            <ion-item *ngFor="let event of eventslist.events">
+              <ion-label>{{event.name}}</ion-label>
+            </ion-item>
+          </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+  
+</ion-content>
+
