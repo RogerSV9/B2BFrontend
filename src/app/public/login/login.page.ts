@@ -5,6 +5,7 @@ import { FormBuilder, FormControl, FormGroup, Validators, NgForm  } from '@angul
 import { Router } from '@angular/router';
 import { User } from 'src/app/models/user';
 import { HttpErrorResponse } from '@angular/common/http';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 import * as io from 'socket.io-client' ;
 import { from } from 'rxjs';
 
@@ -108,6 +109,7 @@ export class LoginPage implements OnInit {
             this.handleError(err);
           });
     }
+
     submitLogin(){
       console.log("submit login to facebook");
         FB.login((response)=>

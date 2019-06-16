@@ -54,15 +54,17 @@ export class HomePage implements OnInit {
 
   UsersList(){
     let data = localStorage.getItem('id');
-    let user = new User(data, null, null,null, null, null, null, null, null, null);
+    let user = new User(data, null, null,null, null, null, null, null, null, null, null, null);
     console.log(user)
     this.userService.UsersList(user)
     .subscribe(res =>{
       this.userService.user= res as User[];
       this.cardsList = res;
+      
       this.ShowOneCard();
       console.log(res);
       console.log(this.cardsList)
+      
     });
   }
 
@@ -71,7 +73,14 @@ export class HomePage implements OnInit {
   this.counter=this.counter
   console.log("SOC"+this.counter)
   this.onecard = this.cardsList[this.counter];
+  if ( this.onecard == null ){
+    this.nomatches();
+    this.router.navigateByUrl('/menu/editprofile');
+  }
+  else{
   this.age = this.ageFromDateOfBirthday(this.onecard.age)
+  console.log(this.age)
+}
 
   /* for (let i in this.cardsList){
     this.onecard = this.cardsList[i];
@@ -149,7 +158,26 @@ export class HomePage implements OnInit {
         }
       ]
     });
+    
 
     await alert.present();
   }
+  async nomatches(){
+    const alert = await this.alertController.create({
+      header: 'Submit alert',
+      message: 'First you need to select one or more tags',
+      buttons: [
+        {
+          text: 'OK',
+          handler: () => {
+            console.log('Confirm Okay');
+          }
+        }
+      ]
+    });
+    
+
+    await alert.present();
+  }
+
 }

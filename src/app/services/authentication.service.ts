@@ -4,6 +4,7 @@ import { Storage } from '@ionic/storage';
 import { BehaviorSubject } from 'rxjs';
 
 const TOKEN_KEY = 'auth-token';
+let token = localStorage.getItem('id');
 
 @Injectable({
   providedIn: 'root'

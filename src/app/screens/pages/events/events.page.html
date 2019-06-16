@@ -1,41 +1,33 @@
 <ion-card class="background">
   <ion-card-header>
-    <table>
-    <tr>
-      <th></th>
-      <th>
-        <ion-card-title class="title">EVENTS</ion-card-title></th>
-      <th></th>
-      <th>  
-        <ion-button (click)="toNeweventPage()">
-            <ion-icon name="add-circle-outline"></ion-icon>           
-        </ion-button> 
-      </th>      
-    </tr>
-    </table>
+         <ion-card-title class="title">EVENTS <ion-icon class="addEvent" (click)="toNeweventPage()" name="add-circle-outline"></ion-icon>           
+         </ion-card-title>
+         
   </ion-card-header>
 
-
-  <ion-card-content>
-    <ion-card-title>EVENT</ion-card-title> 
-    <ion-button (click)=getEvents()></ion-button>
-    <ion-list>
+  <ion-content>
+      <ion-searchbar
+      [(ngModel)]="searchTerm"
+      (ionChange)="setFilteredItems()"
+    ></ion-searchbar>    
       <ion-item *ngFor="let event of eventsList">
-          <ion-card class=event>
-              <ion-card-title color= "light" class="EventTitle">Event: {{ event.name }}</ion-card-title>
-              <ion-card-subtitle color= "light" class="EventDate">Date: {{ event.date}}</ion-card-subtitle>
-              <ion-card-subtitle color= "light" class="EventLocation">Location: {{ event.location }}</ion-card-subtitle>
-              <ion-card-subtitle color= "light" class="EventDescription">Description: {{ event.description }}</ion-card-subtitle>         
-          
-            <ion-card class=description>
-                <ion-tab-button class="myButton">JOIN</ion-tab-button>
+          <ion-card color="dark" class="event">
+              <ion-card-title class="EventTitle" color="white">{{ event.name }}</ion-card-title>
+          <ion-card class="WhiteCard" color="light">
+                <ion-card-subtitle class="EventDate" color="black">
+                  <ion-icon name="calendar"></ion-icon> {{ event.date}}</ion-card-subtitle>
+                
+                <ion-card-subtitle class="EventLocation" color="black">
+                    <ion-icon name="pin"></ion-icon> {{ event.location }}</ion-card-subtitle>
+                
+                <ion-card-subtitle class="EventDescription" color="black">
+                    <ion-icon name="information-circle-outline"></ion-icon> {{ event.description }}</ion-card-subtitle>           
+           </ion-card>                   
+              <div padding>
+                <ion-tab-button class="myButton" shape="round" type="submit" expand="block">JOIN</ion-tab-button>
+              </div>     
             </ion-card>
-  
-            </ion-card>
-
       </ion-item>
-    </ion-list>
-  
-
-  </ion-card-content>
+    
+  </ion-content>
 </ion-card>

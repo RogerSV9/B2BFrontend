@@ -32,6 +32,14 @@ const routes: Routes = [
       {
         path: 'chat',
         loadChildren: '../pages/chat/chat.module#ChatPageModule'
+      },
+      {
+        path: 'editprofile',
+        loadChildren: '../pages/editprofile/editprofile.module#EditprofilePageModule'
+      },
+      {
+        path: 'newevents',
+        loadChildren: '../pages/newevent/newevent.module#NeweventPageModule'
       }
     ]
   }

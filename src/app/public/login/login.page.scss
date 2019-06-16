@@ -1,15 +1,97 @@
-/* ion-item{
-    --background: #ffffff96;
-    --color: #fff;
+//LABELS
+.label {
+    font-size: 24px;
+    background-color: transparent;
+    color: white;
+    margin-bottom: 7px;
+    font-weight:bold;
 }
-ion-button{
-    --background: #062f77;
+
+.item-complex .item-content{
+    background-color: transparent !important;
 }
-a{
-    color: #fff;
-} */
+
+ion-item{
+    --ion-background-color: transparent;
+}
+
+ion-input{
+    --ion-background-color: transparent;
+    --font-size: 18px;
+    --font-color: white;
+}
+
+.input {
+    color: white;
+}
+
+.item.item-input {
+    font-size: 17px;
+    background-color: transparent;
+    margin-bottom: 7px;
+}
+
+//BOTÓN LOGIN
+.myButton {
+	background-color:transparent;
+	/* -moz-border-radius:15px;
+	-webkit-border-radius:15px;
+	border-radius:15px;
+	border:1px solid #000000; */
+	display:inline-block;
+	cursor:pointer;
+	color:#000000;
+	font-family:Trebuchet MS;
+	font-size:19px;
+	/* padding:7px 10px; */
+	text-decoration:none;
+}
+.myButton:hover {
+	background-color:#ffffff;
+}
+.myButton:active {
+	position:relative;
+	top:1px;
+} 
+
+//DONT YOU HAVE AN ACCOUNT TEXT
+.optionText {
+    margin-left: 30px;
+    color: white;
+    font-size: 17px;
+}
+
+//Facebook logo
+.facebookLogo {
+font-size: 32px;
+display: inline-block;
+}
+
+//Facebook text
+.facebookText {
+    display: inline-block;
+   /*  vertical-align: middle; */
+    color: white;
+    font-size: 17px;
+}
+
+//FACEBOOK BUTTON
+.FacebookButton {
+    border:2px solid white;
+    background-color: rgb(37, 108, 240);
+    margin-left: 3px;
+    text-align: center;
+    padding: 4px 20px;
+}
+
+//GLOBAL CARD
+.card{
+    background-color: transparent;
+    margin-top: 80px;
+}
 
 
+//SCREEN BACKGROUND
 .bg{
   
     background-size: cover;
@@ -18,6 +100,7 @@ a{
     #container{
             margin:17% auto;
             text-align:center;
+            background-color: transparent;
     }
 
     ion-content.background{
