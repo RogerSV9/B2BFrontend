@@ -54,7 +54,7 @@ export class EditprofilePage implements OnInit {
   }
 
   async cancel(){
-    this.router.navigateByUrl('/profile');
+    this.router.navigateByUrl('/menu/profile');
   }
 
   async accept(){
@@ -82,7 +82,7 @@ export class EditprofilePage implements OnInit {
               })
               console.log("Updated")
               if(bool = true)
-              this.router.navigateByUrl('/profile');
+              this.router.navigateByUrl('/menu/profile');
               //window.location.reload()
             }
           }

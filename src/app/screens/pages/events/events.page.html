@@ -1,25 +1,15 @@
 <ion-card class="background">
   <ion-card-header>
-    <table>
-    <tr>
-      <th></th>
-      <th>
-        <ion-card-title class="title">EVENTS</ion-card-title></th>
-      <th></th>
-      <th>  
-         <ion-icon class="addEvent" (click)="toNeweventPage()" name="add-circle-outline"></ion-icon>           
-      </th>      
-    </tr>
-    </table>
+         <ion-card-title class="title">EVENTS <ion-icon class="addEvent" (click)="toNeweventPage()" name="add-circle-outline"></ion-icon>           
+         </ion-card-title>
+         
   </ion-card-header>
 
-
-  <ion-card-content>
-    <ion-list>
+  <ion-content>    
       <ion-item *ngFor="let event of eventsList">
           <ion-card color="dark" class="event">
               <ion-card-title class="EventTitle" color="white">{{ event.name }}</ion-card-title>
-            <ion-card class="WhiteCard" color="light">
+          <ion-card class="WhiteCard" color="light">
                 <ion-card-subtitle class="EventDate" color="black">
                   <ion-icon name="calendar"></ion-icon> {{ event.date}}</ion-card-subtitle>
                 
@@ -28,15 +18,12 @@
                 
                 <ion-card-subtitle class="EventDescription" color="black">
                     <ion-icon name="information-circle-outline"></ion-icon> {{ event.description }}</ion-card-subtitle>           
-           
-           </ion-card>                       
+           </ion-card>                   
               <div padding>
                 <ion-tab-button class="myButton" shape="round" type="submit" expand="block">JOIN</ion-tab-button>
-              </div>
-     
+              </div>     
             </ion-card>
-
       </ion-item>
-    </ion-list>
-  </ion-card-content>
+    
+  </ion-content>
 </ion-card>

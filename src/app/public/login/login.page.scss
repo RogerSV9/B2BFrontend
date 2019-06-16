@@ -4,6 +4,7 @@
     background-color: transparent;
     color: white;
     margin-bottom: 7px;
+    font-weight:bold;
 }
 
 .item-complex .item-content{
@@ -17,7 +18,11 @@ ion-item{
 ion-input{
     --ion-background-color: transparent;
     --font-size: 18px;
+    --font-color: white;
+}
 
+.input {
+    color: white;
 }
 
 .item.item-input {
